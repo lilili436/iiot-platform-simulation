@@ -23,3 +23,4 @@
 /environment/maven-repository/**/resolver-status.properties
 /environment/maven-repository/**/maven-metadata-local.xml
 /environment/upload-receipt.json
+/environment/.runtime/

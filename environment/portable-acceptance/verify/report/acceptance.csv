@@ -1,0 +1,5 @@
+﻿item,status,evidence
+配置与精确检查,PASS,C:\Users\86183\AppData\Local\Temp\iiot-git-handoff-0355dfae\iiot-platform-simulation\runs\verify-20261021-104542-9ae78e9b\project\verification\results.json
+最终集成检查,PASS,C:\Users\86183\AppData\Local\Temp\iiot-git-handoff-0355dfae\iiot-platform-simulation\runs\verify-20261021-104542-9ae78e9b\project\verification\final-checks.json
+连续故障恢复,PASS,C:\Users\86183\AppData\Local\Temp\iiot-git-handoff-0355dfae\iiot-platform-simulation\runs\verify-20261021-104542-9ae78e9b\report\continuous-check-results.json
+前端与HTTP接口,PASS,C:\Users\86183\AppData\Local\Temp\iiot-git-handoff-0355dfae\iiot-platform-simulation\runs\verify-20261021-104542-9ae78e9b\report\ui-api-checks.json

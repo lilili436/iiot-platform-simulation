@@ -1,0 +1,43 @@
+Preparing bundled java 21.0.12.1+1 (first use)...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.example.iiot:iiot-simulation >------------------
+[INFO] Building iiot-simulation 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ iiot-simulation ---
+[INFO] skip non existing resourceDirectory C:\Users\86183\AppData\Local\Temp\iiot-portable-78d6\新电脑 空格目录2\project\current\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ iiot-simulation ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 28 source files with javac [debug release 21] to target\classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.127 s
+[INFO] Finished at: 2026-10-21T10:53:16+08:00
+[INFO] ------------------------------------------------------------------------
+Open http://127.0.0.1:53681/ when INDUSTRIAL DEMO appears. Ctrl+C stops this terminal's service.
+Initialising...
+Starting CloudSim version 7.0
+t= 0.000s TRANSFER collect-c1   @ vx-01
+Entities started.
+t= 0.100s STARTUP  collect-c1   @ vx-01
+t= 0.200s READY    collect-c1   @ vx-01
+t= 0.200s TRANSFER preprocess-c1 @ vx-01
+t= 0.400s STARTUP  preprocess-c1 @ vx-01
+t= 0.600s READY    preprocess-c1 @ vx-01
+t= 0.600s TRANSFER detect-c1    @ linux-01
+t= 1.600s STARTUP  detect-c1    @ linux-01
+t= 2.800s READY    detect-c1    @ linux-01
+t= 2.800s TRANSFER alert-c1     @ vx-01
+t= 2.850s STARTUP  alert-c1     @ vx-01
+t= 2.950s READY    alert-c1     @ vx-01
+2.9499999999999997: Simulation: No more future events
+2.9499999999999997: CloudInformationService is shutting down...
+2.9499999999999997: CloudInformationService: Notify all CloudSim entities for shutting down.
+2.9499999999999997: Deployment is shutting down...
+Simulation completed.
+INDUSTRIAL DEMO: http://127.0.0.1:53681
+Synthetic environment. Keep this terminal open; Ctrl+C stops the server.

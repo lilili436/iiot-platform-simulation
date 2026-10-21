@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "platform": "Windows x64",
+  "test": "Relocated Chinese and space directory, no precompiled target or extracted runtime, empty tool PATH/JAVA_HOME, Windows PowerShell 5.1, offline build and demo HTTP",
+  "ready": 4,
+  "python_or_node_installed_required": false,
+  "browser_launch": "not exercised (-NoBrowser)",
+  "project": "C:\\Users\\86183\\AppData\\Local\\Temp\\iiot-portable-78d6\\新电脑 空格目录2\\project",
+  "cleanup": "PASS: exact test Java and PowerShell process paths checked and stopped; test port closed"
+}

@@ -1,0 +1,47 @@
+Initialising...
+Starting CloudSim version 7.0
+t= 0.000s TRANSFER collect-c1   @ vx-01
+Entities started.
+t= 0.100s STARTUP  collect-c1   @ vx-01
+t= 0.200s READY    collect-c1   @ vx-01
+t= 0.200s TRANSFER preprocess-c1 @ vx-01
+t= 0.400s STARTUP  preprocess-c1 @ vx-01
+t= 0.600s READY    preprocess-c1 @ vx-01
+t= 0.600s TRANSFER detect-c1    @ linux-01
+t= 1.600s STARTUP  detect-c1    @ linux-01
+t= 2.800s READY    detect-c1    @ linux-01
+t= 2.800s TRANSFER alert-c1     @ vx-01
+t= 2.850s STARTUP  alert-c1     @ vx-01
+t= 2.950s READY    alert-c1     @ vx-01
+2.9499999999999997: Simulation: No more future events
+2.9499999999999997: CloudInformationService is shutting down...
+2.9499999999999997: CloudInformationService: Notify all CloudSim entities for shutting down.
+2.9499999999999997: Deployment is shutting down...
+Simulation completed.
+INDUSTRIAL DEMO: http://127.0.0.1:37131
+Synthetic environment. Keep this terminal open; Ctrl+C stops the server.
+Initialising...
+Starting CloudSim version 7.0
+t= 0.000s TRANSFER collect-c1   @ win-01
+Entities started.
+t= 0.200s STARTUP  collect-c1   @ win-01
+t= 0.800s READY    collect-c1   @ win-01
+t= 0.800s TRANSFER preprocess-c1 @ win-01
+t= 1.250s STARTUP  preprocess-c1 @ win-01
+t= 2.250s READY    preprocess-c1 @ win-01
+t= 2.250s TRANSFER alert-c1     @ win-01
+t= 2.400s STARTUP  alert-c1     @ win-01
+t= 2.800s READY    alert-c1     @ win-01
+2.8: Simulation: No more future events
+2.8: CloudInformationService is shutting down...
+2.8: CloudInformationService: Notify all CloudSim entities for shutting down.
+2.8: StandbyDeployment is shutting down...
+Simulation completed.
+Initialising...
+Starting CloudSim version 7.0
+Entities started.
+0.0: Simulation: No more future events
+0.0: CloudInformationService is shutting down...
+0.0: CloudInformationService: Notify all CloudSim entities for shutting down.
+0.0: StandbyDeployment is shutting down...
+Simulation completed.

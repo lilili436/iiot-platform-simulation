@@ -1,0 +1,9 @@
+﻿{
+    "status":  "COMPLETE",
+    "action":  "Verify",
+    "started_at":  "2026-10-21T10:45:42.6633866+08:00",
+    "scope":  "LOCAL_SIMULATION",
+    "project":  "C:\\Users\\86183\\AppData\\Local\\Temp\\iiot-git-handoff-0355dfae\\iiot-platform-simulation\\runs\\verify-20261021-104542-9ae78e9b\\project",
+    "report":  "C:\\Users\\86183\\AppData\\Local\\Temp\\iiot-git-handoff-0355dfae\\iiot-platform-simulation\\runs\\verify-20261021-104542-9ae78e9b\\report",
+    "finished_at":  "2026-10-21T10:45:49.1037869+08:00"
+}

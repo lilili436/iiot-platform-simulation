@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "tested_host": "Windows 11 x64",
+  "target_platform": "Windows 10/11 Intel/AMD x64",
+  "scope": "Fresh environment simulated on the current host; not yet independently tested on recipient hardware",
+  "environment": {
+    "shell": "Windows PowerShell 5.1",
+    "PATH": "Windows/System32 and Windows only",
+    "JAVA_HOME": "unset before invocation",
+    "MAVEN_HOME": "unset",
+    "M2_HOME": "unset",
+    "PYTHONHOME": "unset",
+    "PYTHONPATH": "unset",
+    "compilation": "bundled javac and Maven; --offline; explicit bundled Maven cache and settings"
+  },
+  "checks": {
+    "configuration": 100,
+    "configured_cloudsim_runs": 24,
+    "integration": 196,
+    "continuous_assertions": 3280,
+    "continuous_recovery_rounds": 152,
+    "http_ui": 24,
+    "seeded_scenarios": 180,
+    "measured_runs": 7560,
+    "generated_pngs": 3,
+    "relocated_cold_start": "PASS",
+    "auto_browser_launch": "not exercised; -NoBrowser used by automated smoke test"
+  },
+  "runtimes": {
+    "java": {
+      "version": "21.0.12.1+1",
+      "sha256": "286defa2d0b3ec27e5811417dc377252b42d3f5017de87ab4ebaa31b18a8b210"
+    },
+    "python": {
+      "version": "3.14.8",
+      "sha256": "a93abe456ab01bd96d7a085b3cdb6566b3063f4241360d114142fbdb07f0a310"
+    },
+    "node": {
+      "version": "24.21.0",
+      "sha256": "3bd32c5156d5501546435ee0f6ea17e65694e6fa0c071fbd61ae49f7b0e0b586"
+    }
+  },
+  "launcher_sha256": "b70447f213abe452a695f9aad0f5adeef46e512de639a1965919ddeda7c98859",
+  "runtime_bootstrap_sha256": "2c8846b7590bde6c0eae7c3999ad10de5e66daefd1eb87080a914d9a4e990c97"
+}

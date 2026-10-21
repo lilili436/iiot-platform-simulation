@@ -2,21 +2,23 @@
 param(
  [ValidateSet("Build","Demo","Verify","Study")][string]$Action="Demo",
  [ValidateRange(1024,65535)][int]$Port=8765,
- [string]$PythonExe="",[string]$NodeExe="",[switch]$Online
+ [string]$PythonExe="",[string]$NodeExe="",[switch]$Online,[switch]$NoBrowser
 )
 $ErrorActionPreference="Stop"
+# Use this host's built-in modules even when launched from a PowerShell 7 parent.
+if($PSVersionTable.PSVersion.Major -lt 6){
+ $env:PSModulePath=(Join-Path $PSHOME "Modules")+";"+$env:PSModulePath
+}
 $root=$PSScriptRoot
 $project=Join-Path $root "current"
 $maven=Join-Path $root "apache-maven-3.10.0\bin\mvn.cmd"
 $settings=Join-Path $root "environment\maven-settings.xml"
 $cache=Join-Path $root "environment\maven-repository"
 $cloudsim=Join-Path $root "cloudsim-7.0.1\modules\cloudsim\target\cloudsim-7.0.1.jar"
-if($env:JAVA_HOME -and (Test-Path -LiteralPath (Join-Path $env:JAVA_HOME "bin\javac.exe"))){
- $java=Join-Path $env:JAVA_HOME "bin\java.exe";$javac=Join-Path $env:JAVA_HOME "bin\javac.exe"
-}else{
- $java=(Get-Command java -ErrorAction Stop).Source
- $javac=(Get-Command javac -ErrorAction Stop).Source
-}
+. (Join-Path $root "scripts\runtime.ps1")
+$bundledJava=Get-BundledRuntime java
+$java=Join-Path $bundledJava "bin\java.exe"
+$javac=Join-Path $bundledJava "bin\javac.exe"
 foreach($path in @($maven,$settings,$cloudsim)){if(!(Test-Path -LiteralPath $path)){throw "Missing bundled file: $path"}}
 $mavenArgs=@("--batch-mode","-s",$settings,"-gs",$settings,"-Dmaven.repo.local=$cache","-Dstyle.color=never")
 if(!$Online){$mavenArgs+="--offline"}
@@ -34,16 +36,32 @@ try{
  $classes=Join-Path $project "target\classes"
  $cp=$classes+";"+$cloudsim
  if($Action -eq "Demo"){
+  $browserJob=$null
+  if(!$NoBrowser){
+   $browserJob=Start-Job -ArgumentList $Port -ScriptBlock {
+    param($demoPort)
+    for($attempt=0;$attempt -lt 80;$attempt++){
+     try{
+      $state=Invoke-RestMethod -Uri "http://127.0.0.1:$demoPort/api/state" -TimeoutSec 1
+      if($state.nodes.Count -gt 0 -and $state.services.Count -gt 0){Start-Process "http://127.0.0.1:$demoPort/";break}
+     }catch{}
+     Start-Sleep -Milliseconds 250
+    }
+   }
+  }
   Push-Location -LiteralPath $project
   try{
    Write-Host "Open http://127.0.0.1:$Port/ when INDUSTRIAL DEMO appears. Ctrl+C stops this terminal's service."
    & $java "-Dfile.encoding=UTF-8" -cp $cp org.example.iiot.demo.DemoServer $Port
    if($LASTEXITCODE -ne 0){throw "Demo failed. If port is busy, use -Port 8766."}
-  }finally{Pop-Location}
+  }finally{
+   if($browserJob){Stop-Job $browserJob -ErrorAction SilentlyContinue;Remove-Job $browserJob -Force -ErrorAction SilentlyContinue}
+   Pop-Location
+  }
   return
  }
- if(!$PythonExe){$PythonExe=(Get-Command python -ErrorAction Stop).Source}
- if(!$NodeExe){$NodeExe=(Get-Command node -ErrorAction Stop).Source}
+ if(!$PythonExe){$PythonExe=Join-Path (Get-BundledRuntime python) "python.exe"}
+ if(!$NodeExe){$NodeExe=Join-Path (Get-BundledRuntime node) "node.exe"}
  $stamp=(Get-Date -Format "yyyyMMdd-HHmmss")+"-"+[guid]::NewGuid().ToString("N").Substring(0,8)
  $batch=Join-Path $root ("runs\"+$Action.ToLower()+"-"+$stamp)
  $work=Join-Path $batch "project";$report=Join-Path $batch "report";$logs=Join-Path $batch "logs"

@@ -13,10 +13,18 @@
 
 ## 接收方运行
 
-需要 Windows 10/11、**JDK 21**。完整验收另需 Python 3.10+（标准库）、Node.js。图表生成使用 Windows PowerShell 5.1 内置的 .NET Chart。
-将 JDK 的目录设为 `JAVA_HOME`，并把 Python、Node.js 加入 PATH。第三方安装入口见 [环境说明](environment/SETUP.md)。
+**Windows 10/11，Intel/AMD 64 位：完整下载 ZIP、解压后即可运行。** 已携带便携 Java 21（含 javac）、Python、Node.js、Maven 和编译依赖，不需要安装这些工具、不需要设置 JAVA_HOME/PATH、不需要管理员权限，默认构建和运行不访问互联网。
 
-下载 ZIP 后完整解压；或者 `git -c core.longpaths=true clone <仓库地址>`。Windows 建议短路径，例如 `C:\iiot`。在仓库根目录打开 PowerShell：
+1. 在 GitHub 选择 `Code → Download ZIP`，完整解压到可写短目录，例如 `C:\iiot`。不要在 ZIP 预览窗口里直接启动。
+2. 双击 **`启动演示.cmd`** 或 **`START-DEMO.cmd`**。首次会校验并解压便携 Java，然后离线编译，并在服务就绪后自动打开浏览器。
+3. 保持终端打开；页面地址为 `http://127.0.0.1:8765/`。结束演示时在终端按 `Ctrl+C`。
+4. 双击 **`本机验收.cmd` / `VERIFY.cmd`** 可运行检查；双击 **`完整算法评估.cmd` / `RUN-STUDY.cmd`** 可运行完整实验。验收/实验首次使用时才解压 Python 和 Node.js。
+
+源码修改仍在 `current/`，下次启动会重新编译。新报告在 `runs/`。历史步骤说明中要求手动安装 Java/Python/Node 的内容只适用于旧版入口。
+
+验收记录见 [便携验收](environment/portable-acceptance/acceptance.json)：已在本机用清空工具环境、冷启动、中文含空格的新目录检查，以及 180 场景/7,560 次完整评估；尚未在接收方实体电脑上实测。
+
+也可在根目录 PowerShell 中运行：
 
 ```powershell
 # 一次构建，默认离线使用随仓库交接的 Maven 依赖缓存
@@ -31,7 +39,7 @@
 
 如执行策略阻止本地脚本，可针对这一次运行：
 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run.ps1 -Action Demo`。
-可用参数：`-Port 8766`、`-PythonExe <路径>`、`-NodeExe <路径>`。
+可用参数：`-Port 8766`、`-NoBrowser`（不自动打开页面）、`-PythonExe <路径>`、`-NodeExe <路径>`。
 新输出位于 `runs/`，不会覆盖交接的历史结果。`Ctrl+C` 停止演示服务。
 
 ## 演示与结果范围
@@ -39,6 +47,8 @@
 演练台支持离线、驱动缺失、运行环境缺失和工艺温度异常；可选择 Windows 接管，观察平台/版本切换及诊断。健康服务固定，备用节点接管，原节点修复后显示在线并保持备用，不自动回迁；验证后可继续下一轮，也可主动重置。
 
 评估包含 chain、fork_join、independent、random_dag，五个随机种子、三种资源/能力配置、三种规模、基础算法/束宽/排序对照，以及服务数优先和完整业务优先两个目标。精确求解受规模/时间预算限制，报告区分已证最优与未证。规划耗时受 JVM 预热影响，不能把单次结果解释为普遍优势。
+
+便携包适用 Windows x64；不是 macOS/Linux 运行包。其边界与运行库来源见 [环境说明](environment/SETUP.md)。
 
 **当前是本机代码和仿真验收**；未验收真实 Docker Swarm、Windows 容器或 VxWorks RTP/目标板。安装了依赖不等于完成真实平台部署。
 

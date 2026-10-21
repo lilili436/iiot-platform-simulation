@@ -1,0 +1,61 @@
+{
+  "platform": "windows-x64",
+  "packages": [
+    {
+      "name": "java",
+      "version": "21.0.12.1+1",
+      "archive": "java.zip",
+      "directory": "java-21",
+      "executables": [
+        "bin/java.exe",
+        "bin/javac.exe",
+        "bin/server/jvm.dll",
+        "lib/modules"
+      ],
+      "source": "Local Eclipse Temurin JDK 21.0.12.1+1; linked with jlink; legal/ and NOTICE preserved",
+      "modules": "java.se,jdk.compiler,jdk.jartool,jdk.httpserver,jdk.zipfs,jdk.crypto.ec,jdk.unsupported",
+      "sha256": "286defa2d0b3ec27e5811417dc377252b42d3f5017de87ab4ebaa31b18a8b210",
+      "bytes": 46900412,
+      "file_sha256": {
+        "bin/java.exe": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55",
+        "bin/javac.exe": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9",
+        "bin/server/jvm.dll": "3df13bd73c7dbeef26693cef664b4ede84649720f7a12f0203215a65656d25f4",
+        "lib/modules": "1199752e021c57e94b1b2867951d660546aa857af2f17c47369eb50bf60ee18f"
+      }
+    },
+    {
+      "name": "python",
+      "version": "3.14.8",
+      "archive": "python.zip",
+      "directory": "python-3.14.8",
+      "executables": [
+        "python.exe",
+        "python314.dll"
+      ],
+      "source": "https://www.python.org/ftp/python/3.14.8/python-3.14.8-embed-amd64.zip",
+      "checksum_source": "https://www.python.org/downloads/release/python-3148/",
+      "sha256": "a93abe456ab01bd96d7a085b3cdb6566b3063f4241360d114142fbdb07f0a310",
+      "bytes": 12601679,
+      "file_sha256": {
+        "python.exe": "434b361fe0c5960d404974feed493db47f2603a1ace2574312104fbed0182c6f",
+        "python314.dll": "854fe7549eb4b2ac478935a38ae2ca1b774c6fdc3d87f0263fbd697ff86d7149"
+      }
+    },
+    {
+      "name": "node",
+      "version": "24.21.0",
+      "archive": "node.zip",
+      "directory": "node-24.21.0",
+      "executables": [
+        "node.exe"
+      ],
+      "source": "https://nodejs.org/download/release/v24.21.0/win-x64/node.exe",
+      "checksum_source": "https://nodejs.org/download/release/v24.21.0/SHASUMS256.txt",
+      "sha256": "3bd32c5156d5501546435ee0f6ea17e65694e6fa0c071fbd61ae49f7b0e0b586",
+      "bytes": 34979973,
+      "file_sha256": {
+        "node.exe": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+      }
+    }
+  ]
+}

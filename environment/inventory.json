@@ -30,5 +30,7 @@
   "requested_visibility": "public",
   "handoff_mode": "One-way download and independent development; no collaborator required",
   "latest_editable_source": "current/",
-  "offline_build_and_verify": "PASS; see handoff-acceptance/"
+  "offline_build_and_verify": "PASS; see handoff-acceptance/",
+  "portable_runtime": "Bundled Windows x64 Java21 (with javac), Python3.14.8, Node24.21.0; no external tool installation required for current entry points",
+  "portable_acceptance": "PASS; see portable-acceptance/acceptance.json; simulated clean environment on current Windows11 host"
 }
