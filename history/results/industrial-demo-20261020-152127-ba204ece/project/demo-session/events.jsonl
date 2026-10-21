@@ -1,0 +1,9 @@
+{"step":0,"kind":"READY","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。"}
+{"step":941,"kind":"FAULT","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"注入故障：inject_offline @ vx-01；服务可用性按当前节点声明和依赖重新计算。"}
+{"step":944,"kind":"DIAGNOSIS","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"已检查 4 项服务及其依赖，诊断记录 4 条。"}
+{"step":954,"kind":"REPLAN","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 3 项；故障节点或能力仍保持故障状态。"}
+{"step":958,"kind":"RECOVERED","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。仅表示本次模拟业务恢复。"}
+{"step":0,"kind":"READY","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。"}
+{"step":7,"kind":"FAULT","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"注入故障：inject_heat @ motor-01；服务可用性按当前节点声明和依赖重新计算。"}
+{"step":13,"kind":"DIAGNOSIS","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"已检查 4 项服务及其依赖，诊断记录 1 条。"}
+{"step":16,"kind":"COOLING","session":"05e228a6-be9e-4cf5-b8c3-54d80704d286","text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。"}

@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "assertions": 26,
+  "cases": [
+    {
+      "name": "driver fault before repair",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "CAPABILITY_GAP",
+      "label": "能力缺口"
+    },
+    {
+      "name": "offline fault before repair",
+      "technical_status": "OFFLINE",
+      "display_status": "OFFLINE",
+      "label": "离线"
+    },
+    {
+      "name": "repair completed before verification",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "AWAITING_VERIFICATION",
+      "label": "已处理 · 待验证"
+    },
+    {
+      "name": "offline migrated before verification",
+      "technical_status": "OFFLINE",
+      "display_status": "AWAITING_VERIFICATION",
+      "label": "已处理 · 待验证"
+    },
+    {
+      "name": "driver resolved",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "ADAPTED_RECOVERED",
+      "label": "已适配 · 业务恢复"
+    },
+    {
+      "name": "offline resolved",
+      "technical_status": "OFFLINE",
+      "display_status": "ISOLATED_RECOVERED",
+      "label": "已隔离 · 业务恢复"
+    },
+    {
+      "name": "next unrelated round preserves handled node",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "ADAPTED_RECOVERED",
+      "label": "已适配 · 业务恢复"
+    },
+    {
+      "name": "reinject same node shows fresh fault",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "CAPABILITY_GAP",
+      "label": "能力缺口"
+    },
+    {
+      "name": "failed repair is not falsely marked recovered",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "CAPABILITY_GAP",
+      "label": "能力缺口"
+    },
+    {
+      "name": "incomplete availability before verification",
+      "technical_status": "OFFLINE",
+      "display_status": "OFFLINE",
+      "label": "离线"
+    },
+    {
+      "name": "reset restores normal presentation",
+      "technical_status": "ONLINE",
+      "display_status": "ONLINE",
+      "label": "在线"
+    },
+    {
+      "name": "unresolved capability remains gap",
+      "technical_status": "CAPABILITY_GAP",
+      "display_status": "CAPABILITY_GAP",
+      "label": "能力缺口"
+    },
+    {
+      "name": "earlier resolved node remains handled during heat",
+      "technical_status": "OFFLINE",
+      "display_status": "ISOLATED_RECOVERED",
+      "label": "已隔离 · 业务恢复"
+    }
+  ]
+}

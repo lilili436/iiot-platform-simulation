@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "checks": 24,
+  "scope": "HTTP Windows takeover, version switch, no failback, export, atomic incompatible rejection, renderer"
+}

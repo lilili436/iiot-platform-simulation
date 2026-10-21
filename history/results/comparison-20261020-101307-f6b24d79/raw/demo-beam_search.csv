@@ -1,0 +1,2 @@
+scenario,algorithm,requested,accepted,ready,active_nodes,admission_ratio,ready_ratio,cpu_reserved_ratio_all,ram_reserved_ratio_all,cpu_reserved_ratio_active,ram_reserved_ratio_active,combined_reserved_ratio_active,deployment_sim_seconds,planner_wall_ms,workflow_requested,workflow_ready,workflow_ready_ratio
+demo,beam_search,4,4,4,2,1.000000000,1.000000000,0.100806452,0.046568627,0.250000000,0.131944444,0.190972222,2.950000000,15.541000,1,1,1.000000000

@@ -1,0 +1,131 @@
+{
+  "java_source_count": 15,
+  "sources": [
+    {
+      "relative_path": "pom.xml",
+      "sha256": "711AB79D8BA42912E14A2C59798EE37D692711D181F4CAA4B5314CA4A6EC10FD"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/metrics/MetricsReporter.java",
+      "sha256": "7FE792323BB1D32DE16DC505087AC46987188E17125E29AC8BD96D6E23399389"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/metrics/WorkflowMetrics.java",
+      "sha256": "23074B5A77BAF4AED1539B94833DB5364A111ADC04D7612F7781A9E1D963381F"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/model/NodeSpec.java",
+      "sha256": "8F47A24C07E7020B227F8F90570040B4BD604AC60F6E83C507150CB534100EBD"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/model/OsType.java",
+      "sha256": "BD11EB6DB51CB5CD8C651861810183EE22C9D3BAAB72657B5C3E82764E153541"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/model/ServiceSpec.java",
+      "sha256": "BE7501053568D04A0B966DB37243263F8F720B1B5B4A46343EF6904CB7FD91D4"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/model/ServiceVariant.java",
+      "sha256": "3125D22640E46DD434E88F9324886614306F0F9D1F5DD583CF62F6B67BB0BC1F"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/BeamSearchPlanner.java",
+      "sha256": "00C5A30D0E22087953D066F4D6F39E2D84F15D70BF9A3DBFF0CE122B2B6DB6FB"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/BestFitPlanner.java",
+      "sha256": "F2CF558D0C5A42D2EB746FB341E6B001710EFF8B25C0029892997A5A14FA9EA5"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/CompatibilityChecker.java",
+      "sha256": "B518C1DA99B41796AAA88999B2BB1C6DB2A7142723F00DFCDF4DB4B8D11F3FC4"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/FirstFitPlanner.java",
+      "sha256": "6F4F5662973BFD390B325E58B94D8C5D4585849BC0112BEE7019BE40070CB09A"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/RoundRobinPlanner.java",
+      "sha256": "E0E214012DD48FBB18BB96FB2E1FA4DBC6FD2A279B7F59C1F01816A8974B088D"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/placement/ScarcityOrder.java",
+      "sha256": "2B913A4350A3C46BF85A0580845259117885298486829E1D3A6BAB05734495A9"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/scenario/ScenarioFactory.java",
+      "sha256": "E008EC95080600F627A1FD49B78BA2F4DBDD27FB1273C8C66A85E46343DD05B3"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/simulation/DeploymentSimulation.java",
+      "sha256": "AACCB67D31C3DFA2FD88C2D942D0C2AB8087CFC030249332B2B9CC9BDEE476C8"
+    },
+    {
+      "relative_path": "src/main/java/org/example/iiot/SimulationMain.java",
+      "sha256": "5B06FE3D8C3F6F0CAE0C6881405FFA33F97E60AF4E8FD209561315C4AB9D970A"
+    }
+  ],
+  "payloads": [
+    {
+      "file_name": "CompatibilityChecker.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/placement/CompatibilityChecker.java",
+      "sha256": "C72980DF5A361158A9EF33F7DE0A1ECE02FE3FFC22317F99940FE3A5CE1A3828"
+    },
+    {
+      "file_name": "DemoEngine.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/demo/DemoEngine.java",
+      "sha256": "B5AD8BC068CDD2743FB0D7DDB68D76DA162D7039784BEB86CAD2ADE7C7C692F2"
+    },
+    {
+      "file_name": "DemoServer.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/demo/DemoServer.java",
+      "sha256": "96BDDF60F864EE3086D57DC6250F74395F51D7D488E568FF3057523668704D3B"
+    },
+    {
+      "file_name": "DeploymentSimulation.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/simulation/DeploymentSimulation.java",
+      "sha256": "0BD900A04C75872A70BD95FD82EF0F995F1B685F813A3A6AE20BC31B7F3F9B0D"
+    },
+    {
+      "file_name": "ExactPlanner.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/placement/ExactPlanner.java",
+      "sha256": "3C27FB92C9258D015ADAFD1307EB620594F13FBD22160274129965886E4F7BA8"
+    },
+    {
+      "file_name": "Json.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/Json.java",
+      "sha256": "144D92E1FDCF769270B0140648152CF065DD19CB9921BEC7C5EA16A06CCC0797"
+    },
+    {
+      "file_name": "PlanRuntime.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/PlanRuntime.java",
+      "sha256": "FD4AEFC1FF71643A2826184E14EF753306F0B758DA2E0A66866B6A6415579583"
+    },
+    {
+      "file_name": "PlatformAudit.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/metrics/PlatformAudit.java",
+      "sha256": "2A6AD60EE6538FD20FDCDC5E4B651654367376C5E4877BAA1E95BB4B95BD68F9"
+    },
+    {
+      "file_name": "PlatformPolicy.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/placement/PlatformPolicy.java",
+      "sha256": "6F8A0846A36E78FDA294656268FEDB145CA67E4C793505A71189CF80BB8B100E"
+    },
+    {
+      "file_name": "ScenarioLoader.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/config/ScenarioLoader.java",
+      "sha256": "A090B7DE3EE23A21DC973165357B08CAA1A7AA3312FD391A9683329A4DD722FA"
+    },
+    {
+      "file_name": "ScenarioMain.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/ScenarioMain.java",
+      "sha256": "72767D81124C1920B8DC76985938B0BAE9AF199B64D6DC18C1C1E6C2CEF41B78"
+    },
+    {
+      "file_name": "VerificationMain.java.txt",
+      "relative_path": "src/main/java/org/example/iiot/VerificationMain.java",
+      "sha256": "A56A616E86615FE65CD2ADA117E6EABB60832DC7BFE859547CF1096C7EC36A6A"
+    }
+  ]
+}

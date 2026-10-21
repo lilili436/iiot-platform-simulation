@@ -1,0 +1,1779 @@
+{
+  "status": "PASS",
+  "states": {
+    "initial": {
+      "session": "c4f41ef0-8197-4e5e-965a-7d8a4f48ef56",
+      "algorithm": "beam_search",
+      "phase": "RUNNING",
+      "playing": true,
+      "can_inject": true,
+      "episode": 0,
+      "completed_faults": [],
+      "completed_episodes": [],
+      "cooling_active": false,
+      "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+      "standby_shortage": false,
+      "tick": 0,
+      "fault": "",
+      "fault_node": "",
+      "normal_samples": 1,
+      "ready": 4,
+      "requested": 4,
+      "nodes": [
+        {
+          "id": "linux-01",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 2000.0,
+          "cpu_total": 8000.0,
+          "ram": 1024,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "linux-02",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-01",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 8000.0,
+          "ram": 0,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-02",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-01",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 500.0,
+          "cpu_total": 2000.0,
+          "ram": 192,
+          "ram_total": 1024,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-02",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 800.0,
+          "ram": 0,
+          "ram_total": 512,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        }
+      ],
+      "services": [
+        {
+          "dependencies": [],
+          "status": "READY",
+          "stage": "collect",
+          "node": "vx-01",
+          "id": "collect-c1"
+        },
+        {
+          "dependencies": [
+            "collect-c1"
+          ],
+          "status": "READY",
+          "stage": "preprocess",
+          "node": "vx-01",
+          "id": "preprocess-c1"
+        },
+        {
+          "dependencies": [
+            "preprocess-c1"
+          ],
+          "status": "READY",
+          "stage": "detect",
+          "node": "linux-01",
+          "id": "detect-c1"
+        },
+        {
+          "dependencies": [
+            "detect-c1"
+          ],
+          "status": "READY",
+          "stage": "alert",
+          "node": "vx-01",
+          "id": "alert-c1"
+        }
+      ],
+      "samples": [
+        {
+          "temperature": 58.0,
+          "alarm": false,
+          "vibration": 2.2,
+          "step": 0,
+          "rpm": 1480.0
+        }
+      ],
+      "history": [
+        {
+          "kind": "READY",
+          "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+          "episode": 0,
+          "step": 0
+        }
+      ],
+      "diagnosis": [],
+      "moves": [],
+      "deployment_seconds": 2.9499999999999997,
+      "planning_ms": 44.8549,
+      "deployment_events": [
+        {
+          "time": 0.0,
+          "service": "collect-c1",
+          "node": "vx-01",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.1,
+          "service": "collect-c1",
+          "node": "vx-01",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.2,
+          "service": "collect-c1",
+          "node": "vx-01",
+          "phase": "READY"
+        },
+        {
+          "time": 0.2,
+          "service": "preprocess-c1",
+          "node": "vx-01",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.4,
+          "service": "preprocess-c1",
+          "node": "vx-01",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.6000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-01",
+          "phase": "READY"
+        },
+        {
+          "time": 0.6000000000000001,
+          "service": "detect-c1",
+          "node": "linux-01",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 1.6,
+          "service": "detect-c1",
+          "node": "linux-01",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 2.8,
+          "service": "detect-c1",
+          "node": "linux-01",
+          "phase": "READY"
+        },
+        {
+          "time": 2.8,
+          "service": "alert-c1",
+          "node": "vx-01",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 2.8499999999999996,
+          "service": "alert-c1",
+          "node": "vx-01",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 2.9499999999999997,
+          "service": "alert-c1",
+          "node": "vx-01",
+          "phase": "READY"
+        }
+      ]
+    },
+    "fault": {
+      "session": "c4f41ef0-8197-4e5e-965a-7d8a4f48ef56",
+      "algorithm": "beam_search",
+      "phase": "FAULT",
+      "playing": true,
+      "can_inject": false,
+      "episode": 1,
+      "completed_faults": [],
+      "completed_episodes": [],
+      "cooling_active": false,
+      "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+      "standby_shortage": false,
+      "tick": 0,
+      "fault": "inject_driver",
+      "fault_node": "vx-01",
+      "normal_samples": 0,
+      "ready": 4,
+      "requested": 4,
+      "nodes": [
+        {
+          "id": "linux-01",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 2000.0,
+          "cpu_total": 8000.0,
+          "ram": 1024,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "linux-02",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-01",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 8000.0,
+          "ram": 0,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-02",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-01",
+          "os": "VXWORKS",
+          "status": "CAPABILITY_GAP",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 2000.0,
+          "ram": 0,
+          "ram_total": 1024,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": []
+        },
+        {
+          "id": "vx-02",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 500.0,
+          "cpu_total": 800.0,
+          "ram": 192,
+          "ram_total": 512,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        }
+      ],
+      "services": [
+        {
+          "dependencies": [],
+          "status": "READY",
+          "stage": "collect",
+          "node": "vx-02",
+          "id": "collect-c1"
+        },
+        {
+          "dependencies": [
+            "collect-c1"
+          ],
+          "status": "READY",
+          "stage": "preprocess",
+          "node": "vx-02",
+          "id": "preprocess-c1"
+        },
+        {
+          "dependencies": [
+            "preprocess-c1"
+          ],
+          "status": "READY",
+          "stage": "detect",
+          "node": "linux-01",
+          "id": "detect-c1"
+        },
+        {
+          "dependencies": [
+            "detect-c1"
+          ],
+          "status": "READY",
+          "stage": "alert",
+          "node": "vx-02",
+          "id": "alert-c1"
+        }
+      ],
+      "samples": [
+        {
+          "temperature": 58.0,
+          "alarm": false,
+          "vibration": 2.2,
+          "step": 0,
+          "rpm": 1480.0
+        }
+      ],
+      "history": [
+        {
+          "kind": "READY",
+          "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+          "episode": 0,
+          "step": 0
+        },
+        {
+          "kind": "FAULT",
+          "text": "注入故障：inject_driver @ vx-01；记录原部署的故障原因与依赖影响。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "FAILOVER",
+          "text": "自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。",
+          "episode": 1,
+          "step": 0
+        }
+      ],
+      "diagnosis": [],
+      "moves": [
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "collect-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "alert-c1"
+        }
+      ],
+      "deployment_seconds": 1.1000000000000003,
+      "planning_ms": 19.1011,
+      "deployment_events": [
+        {
+          "time": 0.0,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.2,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.7000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 1.0000000000000002,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 1.1000000000000003,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        }
+      ]
+    },
+    "repaired": {
+      "session": "c4f41ef0-8197-4e5e-965a-7d8a4f48ef56",
+      "algorithm": "beam_search",
+      "phase": "VERIFYING",
+      "playing": true,
+      "can_inject": false,
+      "episode": 1,
+      "completed_faults": [],
+      "completed_episodes": [],
+      "cooling_active": false,
+      "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+      "standby_shortage": false,
+      "tick": 0,
+      "fault": "inject_driver",
+      "fault_node": "vx-01",
+      "normal_samples": 0,
+      "ready": 4,
+      "requested": 4,
+      "nodes": [
+        {
+          "id": "linux-01",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 2000.0,
+          "cpu_total": 8000.0,
+          "ram": 1024,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "linux-02",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-01",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 8000.0,
+          "ram": 0,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-02",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-01",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 2000.0,
+          "ram": 0,
+          "ram_total": 1024,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-02",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 500.0,
+          "cpu_total": 800.0,
+          "ram": 192,
+          "ram_total": 512,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        }
+      ],
+      "services": [
+        {
+          "dependencies": [],
+          "status": "READY",
+          "stage": "collect",
+          "node": "vx-02",
+          "id": "collect-c1"
+        },
+        {
+          "dependencies": [
+            "collect-c1"
+          ],
+          "status": "READY",
+          "stage": "preprocess",
+          "node": "vx-02",
+          "id": "preprocess-c1"
+        },
+        {
+          "dependencies": [
+            "preprocess-c1"
+          ],
+          "status": "READY",
+          "stage": "detect",
+          "node": "linux-01",
+          "id": "detect-c1"
+        },
+        {
+          "dependencies": [
+            "detect-c1"
+          ],
+          "status": "READY",
+          "stage": "alert",
+          "node": "vx-02",
+          "id": "alert-c1"
+        }
+      ],
+      "samples": [
+        {
+          "temperature": 58.0,
+          "alarm": false,
+          "vibration": 2.2,
+          "step": 0,
+          "rpm": 1480.0
+        }
+      ],
+      "history": [
+        {
+          "kind": "READY",
+          "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+          "episode": 0,
+          "step": 0
+        },
+        {
+          "kind": "FAULT",
+          "text": "注入故障：inject_driver @ vx-01；记录原部署的故障原因与依赖影响。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "FAILOVER",
+          "text": "自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "DIAGNOSIS",
+          "text": "已检查 4 项服务及其依赖，诊断记录 5 条。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "NODE_REPAIRED",
+          "text": "节点 vx-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。",
+          "episode": 1,
+          "step": 0
+        }
+      ],
+      "diagnosis": [
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "collect-c1 @ vx-01",
+          "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "preprocess-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "detect-c1 @ linux-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "alert-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。",
+          "target": "vx-01",
+          "reason": "DRIVER_MISSING"
+        }
+      ],
+      "moves": [
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "collect-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "alert-c1"
+        }
+      ],
+      "deployment_seconds": 1.1000000000000003,
+      "planning_ms": 19.1011,
+      "deployment_events": [
+        {
+          "time": 0.0,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.2,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.7000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 1.0000000000000002,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 1.1000000000000003,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        }
+      ]
+    },
+    "verified": {
+      "session": "c4f41ef0-8197-4e5e-965a-7d8a4f48ef56",
+      "algorithm": "beam_search",
+      "phase": "RECOVERED",
+      "playing": true,
+      "can_inject": true,
+      "episode": 1,
+      "completed_faults": [
+        "inject_driver"
+      ],
+      "completed_episodes": [
+        {
+          "finished_step": 0,
+          "started_step": 0,
+          "episode": 1,
+          "diagnosis": [
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "collect-c1 @ vx-01",
+              "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "preprocess-c1 @ vx-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "detect-c1 @ linux-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "alert-c1 @ vx-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。",
+              "target": "vx-01",
+              "reason": "DRIVER_MISSING"
+            }
+          ],
+          "fault": "inject_driver",
+          "node": "vx-01",
+          "moves": [
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "collect-c1"
+            },
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "preprocess-c1"
+            },
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "alert-c1"
+            }
+          ],
+          "deployment_events": [
+            {
+              "time": 0.0,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 0.2,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 0.30000000000000004,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            },
+            {
+              "time": 0.30000000000000004,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 0.7000000000000001,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 0.9000000000000001,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            },
+            {
+              "time": 0.9000000000000001,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 1.0000000000000002,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 1.1000000000000003,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            }
+          ]
+        }
+      ],
+      "cooling_active": false,
+      "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+      "standby_shortage": false,
+      "tick": 0,
+      "fault": "inject_driver",
+      "fault_node": "vx-01",
+      "normal_samples": 0,
+      "ready": 4,
+      "requested": 4,
+      "nodes": [
+        {
+          "id": "linux-01",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 2000.0,
+          "cpu_total": 8000.0,
+          "ram": 1024,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "linux-02",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-01",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 8000.0,
+          "ram": 0,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-02",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-01",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 2000.0,
+          "ram": 0,
+          "ram_total": 1024,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-02",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 500.0,
+          "cpu_total": 800.0,
+          "ram": 192,
+          "ram_total": 512,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        }
+      ],
+      "services": [
+        {
+          "dependencies": [],
+          "status": "READY",
+          "stage": "collect",
+          "node": "vx-02",
+          "id": "collect-c1"
+        },
+        {
+          "dependencies": [
+            "collect-c1"
+          ],
+          "status": "READY",
+          "stage": "preprocess",
+          "node": "vx-02",
+          "id": "preprocess-c1"
+        },
+        {
+          "dependencies": [
+            "preprocess-c1"
+          ],
+          "status": "READY",
+          "stage": "detect",
+          "node": "linux-01",
+          "id": "detect-c1"
+        },
+        {
+          "dependencies": [
+            "detect-c1"
+          ],
+          "status": "READY",
+          "stage": "alert",
+          "node": "vx-02",
+          "id": "alert-c1"
+        }
+      ],
+      "samples": [
+        {
+          "temperature": 58.0,
+          "alarm": false,
+          "vibration": 2.2,
+          "step": 0,
+          "rpm": 1480.0
+        }
+      ],
+      "history": [
+        {
+          "kind": "READY",
+          "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+          "episode": 0,
+          "step": 0
+        },
+        {
+          "kind": "FAULT",
+          "text": "注入故障：inject_driver @ vx-01；记录原部署的故障原因与依赖影响。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "FAILOVER",
+          "text": "自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "DIAGNOSIS",
+          "text": "已检查 4 项服务及其依赖，诊断记录 5 条。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "NODE_REPAIRED",
+          "text": "节点 vx-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "RECOVERED",
+          "text": "本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。",
+          "episode": 1,
+          "step": 0
+        }
+      ],
+      "diagnosis": [
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "collect-c1 @ vx-01",
+          "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "preprocess-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "detect-c1 @ linux-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "alert-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。",
+          "target": "vx-01",
+          "reason": "DRIVER_MISSING"
+        }
+      ],
+      "moves": [
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "collect-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "alert-c1"
+        }
+      ],
+      "deployment_seconds": 1.1000000000000003,
+      "planning_ms": 19.1011,
+      "deployment_events": [
+        {
+          "time": 0.0,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.2,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.7000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 1.0000000000000002,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 1.1000000000000003,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        }
+      ]
+    },
+    "export": {
+      "session": "c4f41ef0-8197-4e5e-965a-7d8a4f48ef56",
+      "algorithm": "beam_search",
+      "phase": "RECOVERED",
+      "playing": true,
+      "can_inject": true,
+      "episode": 1,
+      "completed_faults": [
+        "inject_driver"
+      ],
+      "completed_episodes": [
+        {
+          "finished_step": 0,
+          "started_step": 0,
+          "episode": 1,
+          "diagnosis": [
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "collect-c1 @ vx-01",
+              "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "preprocess-c1 @ vx-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "detect-c1 @ linux-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+              "target": "alert-c1 @ vx-01",
+              "reason": "UPSTREAM_UNAVAILABLE"
+            },
+            {
+              "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。",
+              "target": "vx-01",
+              "reason": "DRIVER_MISSING"
+            }
+          ],
+          "fault": "inject_driver",
+          "node": "vx-01",
+          "moves": [
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "collect-c1"
+            },
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "preprocess-c1"
+            },
+            {
+              "from": "vx-01",
+              "to": "vx-02",
+              "service": "alert-c1"
+            }
+          ],
+          "deployment_events": [
+            {
+              "time": 0.0,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 0.2,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 0.30000000000000004,
+              "service": "collect-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            },
+            {
+              "time": 0.30000000000000004,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 0.7000000000000001,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 0.9000000000000001,
+              "service": "preprocess-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            },
+            {
+              "time": 0.9000000000000001,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "TRANSFER"
+            },
+            {
+              "time": 1.0000000000000002,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "STARTUP"
+            },
+            {
+              "time": 1.1000000000000003,
+              "service": "alert-c1",
+              "node": "vx-02",
+              "phase": "READY"
+            }
+          ]
+        }
+      ],
+      "cooling_active": false,
+      "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+      "standby_shortage": false,
+      "tick": 0,
+      "fault": "inject_driver",
+      "fault_node": "vx-01",
+      "normal_samples": 0,
+      "ready": 4,
+      "requested": 4,
+      "nodes": [
+        {
+          "id": "linux-01",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 2000.0,
+          "cpu_total": 8000.0,
+          "ram": 1024,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "linux-02",
+          "os": "LINUX",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "LINUX_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-01",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 8000.0,
+          "ram": 0,
+          "ram_total": 8192,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "win-02",
+          "os": "WINDOWS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 3000.0,
+          "ram": 0,
+          "ram_total": 4096,
+          "architecture": "X86_64",
+          "runtimes": [
+            "WINDOWS_CONTAINER"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-01",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "STANDBY",
+          "cpu": 0.0,
+          "cpu_total": 2000.0,
+          "ram": 0,
+          "ram_total": 1024,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        },
+        {
+          "id": "vx-02",
+          "os": "VXWORKS",
+          "status": "ONLINE",
+          "role": "ACTIVE",
+          "cpu": 500.0,
+          "cpu_total": 800.0,
+          "ram": 192,
+          "ram_total": 512,
+          "architecture": "ARM64",
+          "runtimes": [
+            "VX_RTP"
+          ],
+          "drivers": [
+            "SENSOR_DRIVER"
+          ]
+        }
+      ],
+      "services": [
+        {
+          "dependencies": [],
+          "status": "READY",
+          "stage": "collect",
+          "node": "vx-02",
+          "id": "collect-c1"
+        },
+        {
+          "dependencies": [
+            "collect-c1"
+          ],
+          "status": "READY",
+          "stage": "preprocess",
+          "node": "vx-02",
+          "id": "preprocess-c1"
+        },
+        {
+          "dependencies": [
+            "preprocess-c1"
+          ],
+          "status": "READY",
+          "stage": "detect",
+          "node": "linux-01",
+          "id": "detect-c1"
+        },
+        {
+          "dependencies": [
+            "detect-c1"
+          ],
+          "status": "READY",
+          "stage": "alert",
+          "node": "vx-02",
+          "id": "alert-c1"
+        }
+      ],
+      "samples": [
+        {
+          "temperature": 58.0,
+          "alarm": false,
+          "vibration": 2.2,
+          "step": 0,
+          "rpm": 1480.0
+        }
+      ],
+      "history": [
+        {
+          "kind": "READY",
+          "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+          "episode": 0,
+          "step": 0
+        },
+        {
+          "kind": "FAULT",
+          "text": "注入故障：inject_driver @ vx-01；记录原部署的故障原因与依赖影响。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "FAILOVER",
+          "text": "自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "DIAGNOSIS",
+          "text": "已检查 4 项服务及其依赖，诊断记录 5 条。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "NODE_REPAIRED",
+          "text": "节点 vx-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。",
+          "episode": 1,
+          "step": 0
+        },
+        {
+          "kind": "RECOVERED",
+          "text": "本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。",
+          "episode": 1,
+          "step": 0
+        }
+      ],
+      "diagnosis": [
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "collect-c1 @ vx-01",
+          "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "preprocess-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "detect-c1 @ linux-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。",
+          "target": "alert-c1 @ vx-01",
+          "reason": "UPSTREAM_UNAVAILABLE"
+        },
+        {
+          "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。",
+          "target": "vx-01",
+          "reason": "DRIVER_MISSING"
+        }
+      ],
+      "moves": [
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "collect-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "from": "vx-01",
+          "to": "vx-02",
+          "service": "alert-c1"
+        }
+      ],
+      "deployment_seconds": 1.1000000000000003,
+      "planning_ms": 19.1011,
+      "deployment_events": [
+        {
+          "time": 0.0,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.2,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "collect-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.30000000000000004,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 0.7000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "preprocess-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        },
+        {
+          "time": 0.9000000000000001,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "TRANSFER"
+        },
+        {
+          "time": 1.0000000000000002,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "STARTUP"
+        },
+        {
+          "time": 1.1000000000000003,
+          "service": "alert-c1",
+          "node": "vx-02",
+          "phase": "READY"
+        }
+      ],
+      "plan": {
+        "scenario_id": "demo-industrial",
+        "requested": 4,
+        "ready": 4,
+        "workflow_requested": 1,
+        "workflow_ready": 1,
+        "deployment_seconds": 1.1000000000000003,
+        "predicted_seconds": 3.3000000000000003,
+        "planning_ms": 19.1011,
+        "exact": false,
+        "optimal": false,
+        "visited": 465,
+        "assignments": [
+          {
+            "variant": "collect-vx-c1",
+            "cpu": 100.0,
+            "service": "collect-c1",
+            "ram": 32,
+            "node": "vx-02"
+          },
+          {
+            "variant": "preprocess-vx-c1",
+            "cpu": 300.0,
+            "service": "preprocess-c1",
+            "ram": 128,
+            "node": "vx-02"
+          },
+          {
+            "variant": "detect-linux-c1",
+            "cpu": 2000.0,
+            "service": "detect-c1",
+            "ram": 1024,
+            "node": "linux-01"
+          },
+          {
+            "variant": "alert-vx-c1",
+            "cpu": 100.0,
+            "service": "alert-c1",
+            "ram": 32,
+            "node": "vx-02"
+          }
+        ],
+        "rejections": {},
+        "events": [
+          {
+            "time": 0.0,
+            "service": "collect-c1",
+            "node": "vx-02",
+            "phase": "TRANSFER"
+          },
+          {
+            "time": 0.2,
+            "service": "collect-c1",
+            "node": "vx-02",
+            "phase": "STARTUP"
+          },
+          {
+            "time": 0.30000000000000004,
+            "service": "collect-c1",
+            "node": "vx-02",
+            "phase": "READY"
+          },
+          {
+            "time": 0.30000000000000004,
+            "service": "preprocess-c1",
+            "node": "vx-02",
+            "phase": "TRANSFER"
+          },
+          {
+            "time": 0.7000000000000001,
+            "service": "preprocess-c1",
+            "node": "vx-02",
+            "phase": "STARTUP"
+          },
+          {
+            "time": 0.9000000000000001,
+            "service": "preprocess-c1",
+            "node": "vx-02",
+            "phase": "READY"
+          },
+          {
+            "time": 0.9000000000000001,
+            "service": "alert-c1",
+            "node": "vx-02",
+            "phase": "TRANSFER"
+          },
+          {
+            "time": 1.0000000000000002,
+            "service": "alert-c1",
+            "node": "vx-02",
+            "phase": "STARTUP"
+          },
+          {
+            "time": 1.1000000000000003,
+            "service": "alert-c1",
+            "node": "vx-02",
+            "phase": "READY"
+          }
+        ],
+        "origins": {
+          "variant:detect-linux-c1": "SYNTHETIC:course-model-v1",
+          "variant:collect-win-c1": "SYNTHETIC:course-model-v1",
+          "node:win-01": "SYNTHETIC:course-model-v1",
+          "node:win-02": "SYNTHETIC:course-model-v1",
+          "node:linux-01": "SYNTHETIC:course-model-v1",
+          "node:linux-02": "SYNTHETIC:course-model-v1",
+          "variant:detect-win-c1": "SYNTHETIC:course-model-v1",
+          "variant:collect-vx-c1": "SYNTHETIC:course-model-v1",
+          "variant:alert-linux-c1": "SYNTHETIC:course-model-v1",
+          "variant:collect-linux-c1": "SYNTHETIC:course-model-v1",
+          "variant:alert-vx-c1": "SYNTHETIC:course-model-v1",
+          "variant:preprocess-win-c1": "SYNTHETIC:course-model-v1",
+          "variant:preprocess-vx-c1": "SYNTHETIC:course-model-v1",
+          "variant:alert-win-c1": "SYNTHETIC:course-model-v1",
+          "variant:preprocess-linux-c1": "SYNTHETIC:course-model-v1",
+          "node:vx-01": "SYNTHETIC:course-model-v1",
+          "node:vx-02": "SYNTHETIC:course-model-v1"
+        }
+      },
+      "notice": "SYNTHETIC industrial process and capability declarations. Java planners and CloudSim deployment events execute locally; no physical device or real OS/container/RTP verification."
+    }
+  }
+}

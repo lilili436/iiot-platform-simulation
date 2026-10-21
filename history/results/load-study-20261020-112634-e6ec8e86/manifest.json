@@ -1,0 +1,34 @@
+﻿{
+    "run_id":  "20261020-112634-e6ec8e86",
+    "started_at":  "2026-10-20T11:26:34.9799995+08:00",
+    "project_root":  "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation",
+    "status":  "COMPLETE",
+    "scenario":  "pressure",
+    "chain_counts":  [
+                         1,
+                         2,
+                         3,
+                         4,
+                         5,
+                         6,
+                         7,
+                         8
+                     ],
+    "algorithms":  [
+                       "first_fit",
+                       "round_robin",
+                       "best_fit",
+                       "beam_search"
+                   ],
+    "repetitions":  1,
+    "beam_width":  64,
+    "metrics_discovery":  "filesystem delta, no decoded console paths",
+    "log_decode":  "strict UTF-8, falling back to Windows culture ANSI code page",
+    "expected_runs":  32,
+    "timeout_seconds_per_process":  180,
+    "timing_protocol":  "one fresh Maven/JVM process per case; planner-only timer; no warm-up exclusion",
+    "note":  "Synthetic fixed-node load sweep; every requested workflow has four services.",
+    "maven_version_output":  "Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)\r\nMaven home: D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\apache-maven-3.10.0\r\nJava version: 21.0.12.1, vendor: Eclipse Adoptium, runtime: D:\\JDK21\r\nDefault locale: zh_CN, platform encoding: UTF-8, time zone: Asia/Shanghai\r\nOS name: \"windows 11\", version: \"10.0\", arch: \"amd64\", family: \"windows\"",
+    "completed_runs":  32,
+    "finished_at":  "2026-10-20T11:28:53.1124431+08:00"
+}

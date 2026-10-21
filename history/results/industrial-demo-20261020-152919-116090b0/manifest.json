@@ -1,0 +1,12 @@
+﻿{
+    "run_id":  "20261020-152919-116090b0",
+    "kind":  "industrial-demo",
+    "status":  "FAILED",
+    "source_project":  "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation",
+    "experiment_project":  "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation\\results\\industrial-demo-20261020-152919-116090b0\\project",
+    "port":  8765,
+    "started_at":  "2026-10-20T15:29:19.5548844+08:00",
+    "scope":  "Synthetic declarations and process data; fixed-order exact verification; localhost demo",
+    "failure":  "Demo process failed; if the port is occupied, use -Port 8766",
+    "finished_at":  "2026-10-20T15:29:32.1100908+08:00"
+}

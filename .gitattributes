@@ -1,0 +1,2 @@
+# Historical toolkits validate exact SHA256 bytes, including BOM and CRLF.
+* -text

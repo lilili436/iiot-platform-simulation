@@ -1,0 +1,2 @@
+algorithm,requested,accepted,ready,active_nodes,admission_ratio,ready_ratio,cpu_reserved_ratio_all,ram_reserved_ratio_all,cpu_reserved_ratio_active,ram_reserved_ratio_active,combined_reserved_ratio_active,deployment_sim_seconds,planner_wall_ms
+first_fit,4,4,4,1,1.000000000,1.000000000,0.133064516,0.068627451,0.412500000,0.218750000,0.315625000,4.220000000,4.428200

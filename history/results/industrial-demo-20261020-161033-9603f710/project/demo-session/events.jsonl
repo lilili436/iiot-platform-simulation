@@ -1,0 +1,23 @@
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","step":0,"episode":0,"kind":"READY"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"注入故障：inject_driver @ vx-01；服务可用性按当前节点声明和依赖重新计算。","step":10,"episode":1,"kind":"FAULT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"已检查 4 项服务及其依赖，诊断记录 4 条。","step":35,"episode":1,"kind":"DIAGNOSIS"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 1 项；故障节点或能力仍保持故障状态。","step":40,"episode":1,"kind":"REPLAN"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":43,"episode":1,"kind":"RECOVERED"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"注入故障：inject_driver @ linux-02；服务可用性按当前节点声明和依赖重新计算。","step":53,"episode":2,"kind":"FAULT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":55,"episode":2,"kind":"DIAGNOSIS"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；故障节点或能力仍保持故障状态。","step":57,"episode":2,"kind":"REPLAN"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":58,"episode":2,"kind":"RECOVERED"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"注入故障：inject_heat @ motor-01；服务可用性按当前节点声明和依赖重新计算。","step":204,"episode":3,"kind":"FAULT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":208,"episode":3,"kind":"DIAGNOSIS"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。","step":210,"episode":3,"kind":"COOLING"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"继续采样：需要温度/振动正常，工艺故障还需连续3次正常。","step":211,"episode":3,"kind":"VERIFY_WAIT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":221,"episode":3,"kind":"RECOVERED"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"注入故障：inject_runtime @ linux-02；服务可用性按当前节点声明和依赖重新计算。","step":228,"episode":4,"kind":"FAULT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":230,"episode":4,"kind":"DIAGNOSIS"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；故障节点或能力仍保持故障状态。","step":230,"episode":4,"kind":"REPLAN"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":231,"episode":4,"kind":"RECOVERED"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","step":0,"episode":0,"kind":"READY"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"注入故障：inject_offline @ win-01；服务可用性按当前节点声明和依赖重新计算。","step":69,"episode":1,"kind":"FAULT"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":72,"episode":1,"kind":"DIAGNOSIS"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；故障节点或能力仍保持故障状态。","step":73,"episode":1,"kind":"REPLAN"}
+{"session":"8367e093-cd66-4122-a7df-cc6d24e12d3d","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":217,"episode":1,"kind":"RECOVERED"}

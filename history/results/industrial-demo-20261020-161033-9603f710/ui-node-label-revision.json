@@ -1,0 +1,18 @@
+{
+  "updated_at": "2026-10-20T16:32:48.2560271+08:00",
+  "scope": "Node remediation labels only; no server restart",
+  "files": [
+    {
+      "path": "web/app.js",
+      "sha256": "B229A92EFF085B97B9AF3DBA2BCB05BC745DF70B6E419105AC70719EC57AA859"
+    },
+    {
+      "path": "web/style.css",
+      "sha256": "EDF33F757C732CA20B5441D0E985D40E2CAFD3D20EEB86AD917E8475E0289837"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "344733EB88DFC1A7E8889CE8E09E5E282EACC7FCFEDBE023F6EEDC83FAE6A575"
+    }
+  ]
+}

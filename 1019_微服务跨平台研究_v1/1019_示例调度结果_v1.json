@@ -1,0 +1,384 @@
+{
+  "data_kind": "synthetic_static_model",
+  "metrics": {
+    "accepted": 8,
+    "requested": 12,
+    "acceptance_rate": 0.6666666666666666,
+    "active_nodes": 3,
+    "active_reserved_utilization": 0.4959922340029762,
+    "all_reserved_utilization": 0.17728456854496605,
+    "deploy_makespan_ms": 7944.6658373496575
+  },
+  "placements": [
+    {
+      "service": "s06-sensor",
+      "node": "n02",
+      "variant_index": 0,
+      "adaptation_score": 0.2774424229791111,
+      "response_estimate_ms": 22.135349554169444
+    },
+    {
+      "service": "s07-sensor",
+      "node": "n05",
+      "variant_index": 0,
+      "adaptation_score": 0.4836064130858873,
+      "response_estimate_ms": 20.179591455080633
+    },
+    {
+      "service": "s04-sensor",
+      "node": "n05",
+      "variant_index": 0,
+      "adaptation_score": 0.7510333825924091,
+      "response_estimate_ms": 15.428985959509088
+    },
+    {
+      "service": "s00-sensor",
+      "node": "n02",
+      "variant_index": 0,
+      "adaptation_score": 0.8453526648723029,
+      "response_estimate_ms": 19.88923265053944
+    },
+    {
+      "service": "s08-gateway",
+      "node": "n03",
+      "variant_index": 0,
+      "adaptation_score": 0.4767059438854569,
+      "response_estimate_ms": 23.385015305727155
+    },
+    {
+      "service": "s01-collect",
+      "node": "n03",
+      "variant_index": 0,
+      "adaptation_score": 0.7589252869724445,
+      "response_estimate_ms": 31.633692605511076
+    },
+    {
+      "service": "s11-collect",
+      "node": "n03",
+      "variant_index": 0,
+      "adaptation_score": 0.8030453316566941,
+      "response_estimate_ms": 29.197183668661186
+    },
+    {
+      "service": "s03-gateway",
+      "node": "n03",
+      "variant_index": 0,
+      "adaptation_score": 0.6496257126781302,
+      "response_estimate_ms": 28.699928732186986
+    }
+  ],
+  "rejected": [
+    {
+      "service": "s02-windows_only",
+      "reason": "no_static_candidate",
+      "node_variant_failures": {
+        "n00": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n01": [
+          [
+            "deadline"
+          ]
+        ],
+        "n02": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n03": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n04": [
+          [
+            "deadline"
+          ]
+        ],
+        "n05": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ]
+      }
+    },
+    {
+      "service": "s05-windows_only",
+      "reason": "no_static_candidate",
+      "node_variant_failures": {
+        "n00": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n01": [
+          [
+            "deadline"
+          ]
+        ],
+        "n02": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n03": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n04": [
+          [
+            "deadline"
+          ]
+        ],
+        "n05": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ]
+      }
+    },
+    {
+      "service": "s09-compute",
+      "reason": "no_static_candidate",
+      "node_variant_failures": {
+        "n00": [
+          [
+            "deadline"
+          ],
+          [
+            "arch",
+            "deadline"
+          ],
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n01": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "arch",
+            "abi",
+            "deadline"
+          ],
+          [
+            "deadline"
+          ]
+        ],
+        "n02": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "runtime",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n03": [
+          [
+            "security",
+            "deadline"
+          ],
+          [
+            "arch",
+            "security",
+            "deadline"
+          ],
+          [
+            "os",
+            "abi",
+            "security",
+            "deadline"
+          ]
+        ],
+        "n04": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "arch",
+            "abi",
+            "deadline"
+          ],
+          [
+            "deadline"
+          ]
+        ],
+        "n05": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "runtime",
+            "abi",
+            "deadline"
+          ],
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ]
+      }
+    },
+    {
+      "service": "s10-windows_only",
+      "reason": "no_static_candidate",
+      "node_variant_failures": {
+        "n00": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n01": [
+          [
+            "deadline"
+          ]
+        ],
+        "n02": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n03": [
+          [
+            "os",
+            "abi",
+            "deadline"
+          ]
+        ],
+        "n04": [
+          [
+            "deadline"
+          ]
+        ],
+        "n05": [
+          [
+            "os",
+            "arch",
+            "runtime",
+            "abi",
+            "deadline"
+          ]
+        ]
+      }
+    }
+  ],
+  "searched_pareto": [
+    {
+      "metrics": {
+        "accepted": 8,
+        "requested": 12,
+        "acceptance_rate": 0.6666666666666666,
+        "active_nodes": 3,
+        "active_reserved_utilization": 0.4959922340029762,
+        "all_reserved_utilization": 0.17728456854496605,
+        "deploy_makespan_ms": 7944.6658373496575
+      },
+      "assignments": [
+        {
+          "service": "s06-sensor",
+          "node": "n02",
+          "variant_index": 0
+        },
+        {
+          "service": "s07-sensor",
+          "node": "n05",
+          "variant_index": 0
+        },
+        {
+          "service": "s04-sensor",
+          "node": "n05",
+          "variant_index": 0
+        },
+        {
+          "service": "s00-sensor",
+          "node": "n02",
+          "variant_index": 0
+        },
+        {
+          "service": "s08-gateway",
+          "node": "n03",
+          "variant_index": 0
+        },
+        {
+          "service": "s01-collect",
+          "node": "n03",
+          "variant_index": 0
+        },
+        {
+          "service": "s11-collect",
+          "node": "n03",
+          "variant_index": 0
+        },
+        {
+          "service": "s03-gateway",
+          "node": "n03",
+          "variant_index": 0
+        }
+      ]
+    }
+  ]
+}

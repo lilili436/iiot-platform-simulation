@@ -1,0 +1,101 @@
+package org.example.iiot.placement;
+
+import java.util.*;
+import org.example.iiot.model.*;
+
+/** Synthetic capability declarations; no host probing or real compatibility certification. */
+public final class PlatformPolicy {
+    private PlatformPolicy() {}
+    public record Capabilities(String architecture, Set<String> runtimes,
+            Set<String> apis, Set<String> drivers, Set<String> security) {
+        public Capabilities {
+            Objects.requireNonNull(architecture);
+            runtimes=Set.copyOf(runtimes); apis=Set.copyOf(apis);
+            drivers=Set.copyOf(drivers); security=Set.copyOf(security);
+        }
+    }
+    public record Requirements(String architecture, String runtime,
+            Set<String> apis, Set<String> drivers, Set<String> security) {
+        public Requirements {
+            Objects.requireNonNull(architecture); Objects.requireNonNull(runtime);
+            apis=Set.copyOf(apis); drivers=Set.copyOf(drivers); security=Set.copyOf(security);
+        }
+    }
+    public static final List<String> CODES = List.of(
+            "ARCH_MISMATCH", "RUNTIME_UNSUPPORTED", "API_MISSING",
+            "DRIVER_MISSING", "SECURITY_POLICY_MISMATCH");
+    private static String profile="uniform", mode="base";
+    public static void configure(String newProfile, String newMode) {
+        if (!Set.of("uniform","mixed").contains(newProfile) ||
+            !Set.of("base","full").contains(newMode))
+            throw new IllegalArgumentException("Expected profile uniform|mixed and mode base|full.");
+        profile=newProfile; mode=newMode;
+    }
+    public static String profile() { return profile; }
+    public static String mode() { return mode; }
+    private static String arch(OsType os) {
+        return os == OsType.VXWORKS ? "ARM64" : "X86_64";
+    }
+    private static String runtime(OsType os) {
+        return switch(os) {
+            case LINUX -> "LINUX_CONTAINER";
+            case WINDOWS -> "WINDOWS_CONTAINER";
+            case VXWORKS -> "VX_RTP";
+        };
+    }
+    public static Capabilities capabilitiesFor(NodeSpec node) {
+        String architecture=arch(node.os());
+        Set<String> runtimes=new HashSet<>(Set.of(runtime(node.os())));
+        Set<String> apis=new HashSet<>(Set.of("SENSOR_API","FILTER_API","INFERENCE_API","ALERT_API"));
+        Set<String> drivers=new HashSet<>(Set.of("SENSOR_DRIVER"));
+        Set<String> security=new HashSet<>(Set.of("SIGNED_PACKAGE","TLS_NETWORK","TRUSTED_NODE"));
+        if (profile.equals("mixed")) {
+            if (node.id().equals("linux-02") && node.os()==OsType.LINUX) architecture="ARM64";
+            if (node.id().equals("win-02") && node.os()==OsType.WINDOWS) runtimes.clear();
+            if (node.id().equals("vx-02") && node.os()==OsType.VXWORKS) {
+                apis.remove("FILTER_API"); drivers.clear(); security.remove("TLS_NETWORK");
+            }
+        }
+        return new Capabilities(architecture,runtimes,apis,drivers,security);
+    }
+    public static Requirements requirementsFor(ServiceVariant variant) {
+        String kind=variant.id().split("-",2)[0];
+        String api=switch(kind) {
+            case "collect" -> "SENSOR_API";
+            case "preprocess" -> "FILTER_API";
+            case "detect" -> "INFERENCE_API";
+            case "alert" -> "ALERT_API";
+            case "probe" -> "";
+            default -> throw new IllegalArgumentException("Missing capability declaration: "+variant.id());
+        };
+        Set<String> security=new HashSet<>(Set.of("SIGNED_PACKAGE"));
+        if (kind.equals("collect") || kind.equals("alert")) security.add("TLS_NETWORK");
+        if (kind.equals("detect")) security.add("TRUSTED_NODE");
+        return new Requirements(arch(variant.os()),runtime(variant.os()),
+                api.isEmpty()?Set.of():Set.of(api),
+                kind.equals("collect")?Set.of("SENSOR_DRIVER"):Set.of(),security);
+    }
+    public static List<String> compare(Requirements required, Capabilities actual) {
+        List<String> reasons=new ArrayList<>();
+        if (!required.architecture().equals(actual.architecture()))
+            reasons.add("ARCH_MISMATCH: required="+required.architecture()+", actual="+actual.architecture());
+        if (!actual.runtimes().contains(required.runtime()))
+            reasons.add("RUNTIME_UNSUPPORTED: required="+required.runtime());
+        missing(reasons,"API_MISSING",required.apis(),actual.apis());
+        missing(reasons,"DRIVER_MISSING",required.drivers(),actual.drivers());
+        missing(reasons,"SECURITY_POLICY_MISMATCH",required.security(),actual.security());
+        return List.copyOf(reasons);
+    }
+    private static void missing(List<String> reasons,String code,Set<String> required,Set<String> actual) {
+        Set<String> absent=new TreeSet<>(required); absent.removeAll(actual);
+        if (!absent.isEmpty()) reasons.add(code+": missing="+String.join("|",absent));
+    }
+    public static List<String> declaredRejectionReasons(ServiceVariant variant,NodeSpec node) {
+        return compare(requirementsFor(variant),capabilitiesFor(node));
+    }
+    public static List<String> activeRejectionReasons(ServiceVariant variant,NodeSpec node) {
+        // Always resolve declarations: unknown variants fail closed in both modes.
+        Requirements required=requirementsFor(variant);
+        return mode.equals("full")?compare(required,capabilitiesFor(node)):List.of();
+    }
+}

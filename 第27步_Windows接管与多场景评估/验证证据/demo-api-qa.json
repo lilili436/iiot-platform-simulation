@@ -1,0 +1,301 @@
+{
+  "status": "PASS",
+  "checks": 148,
+  "episodes": [
+    {
+      "algorithm": "beam_search",
+      "fault": "inject_offline",
+      "target": "vx-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "vx-02",
+          "from": "vx-01",
+          "service": "collect-c1"
+        },
+        {
+          "to": "vx-02",
+          "from": "vx-01",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "vx-02",
+          "from": "vx-01",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "beam_search",
+      "fault": "inject_driver",
+      "target": "vx-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "vx-02",
+          "from": "vx-01",
+          "service": "collect-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "beam_search",
+      "fault": "inject_runtime",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "win-01",
+          "from": "linux-01",
+          "service": "detect-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "beam_search",
+      "fault": "inject_heat",
+      "target": "vx-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": []
+    },
+    {
+      "algorithm": "first_fit",
+      "fault": "inject_offline",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "collect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "win-01",
+          "from": "linux-01",
+          "service": "detect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "first_fit",
+      "fault": "inject_driver",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "collect-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "first_fit",
+      "fault": "inject_runtime",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "collect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "win-01",
+          "from": "linux-01",
+          "service": "detect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "first_fit",
+      "fault": "inject_heat",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": []
+    },
+    {
+      "algorithm": "round_robin",
+      "fault": "inject_offline",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "collect-c1"
+        },
+        {
+          "to": "win-01",
+          "from": "linux-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "win-02",
+          "from": "win-01",
+          "service": "detect-c1"
+        },
+        {
+          "to": "vx-01",
+          "from": "win-02",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "round_robin",
+      "fault": "inject_driver",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "linux-01",
+          "service": "collect-c1"
+        },
+        {
+          "to": "win-01",
+          "from": "linux-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "win-02",
+          "from": "win-01",
+          "service": "detect-c1"
+        },
+        {
+          "to": "vx-01",
+          "from": "win-02",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "round_robin",
+      "fault": "inject_runtime",
+      "target": "win-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "win-02",
+          "from": "win-01",
+          "service": "detect-c1"
+        },
+        {
+          "to": "vx-01",
+          "from": "win-02",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "round_robin",
+      "fault": "inject_heat",
+      "target": "linux-01",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": []
+    },
+    {
+      "algorithm": "best_fit",
+      "fault": "inject_offline",
+      "target": "vx-02",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "win-02",
+          "from": "vx-02",
+          "service": "collect-c1"
+        },
+        {
+          "to": "win-02",
+          "from": "vx-02",
+          "service": "preprocess-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "win-02",
+          "service": "detect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "win-02",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "best_fit",
+      "fault": "inject_driver",
+      "target": "vx-02",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "win-02",
+          "from": "vx-02",
+          "service": "collect-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "best_fit",
+      "fault": "inject_runtime",
+      "target": "win-02",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": [
+        {
+          "to": "linux-02",
+          "from": "win-02",
+          "service": "detect-c1"
+        },
+        {
+          "to": "linux-02",
+          "from": "win-02",
+          "service": "alert-c1"
+        }
+      ]
+    },
+    {
+      "algorithm": "best_fit",
+      "fault": "inject_heat",
+      "target": "vx-02",
+      "ready": 4,
+      "phase": "RECOVERED",
+      "moves": []
+    }
+  ]
+}

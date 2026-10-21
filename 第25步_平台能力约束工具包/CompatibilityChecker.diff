@@ -1,0 +1,10 @@
+--- placement/CompatibilityChecker.java
++++ placement/CompatibilityChecker.java
+@@ -38,6 +38,7 @@
+             );
+         }
+ 
++        reasons.addAll(PlatformPolicy.activeRejectionReasons(variant, node));
+         return List.copyOf(reasons);
+     }
+ 

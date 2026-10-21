@@ -1,0 +1,106 @@
+﻿{
+    "run_id":  "20261020-134623-4dd2fe33",
+    "started_at":  "2026-10-20T13:46:23.6595750+08:00",
+    "source_project_root":  "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation",
+    "project_root":  "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation\\results\\platform-study-20261020-134623-4dd2fe33\\project",
+    "status":  "COMPLETE",
+    "scenario":  "pressure",
+    "chain_counts":  [
+                         3,
+                         6
+                     ],
+    "settings":  [
+                     {
+                         "profile":  "uniform",
+                         "mode":  "base",
+                         "algorithm":  "first_fit"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "base",
+                         "algorithm":  "round_robin"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "base",
+                         "algorithm":  "best_fit"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "base",
+                         "algorithm":  "beam_search"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "full",
+                         "algorithm":  "first_fit"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "full",
+                         "algorithm":  "round_robin"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "full",
+                         "algorithm":  "best_fit"
+                     },
+                     {
+                         "profile":  "uniform",
+                         "mode":  "full",
+                         "algorithm":  "beam_search"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "base",
+                         "algorithm":  "first_fit"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "base",
+                         "algorithm":  "round_robin"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "base",
+                         "algorithm":  "best_fit"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "base",
+                         "algorithm":  "beam_search"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "full",
+                         "algorithm":  "first_fit"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "full",
+                         "algorithm":  "round_robin"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "full",
+                         "algorithm":  "best_fit"
+                     },
+                     {
+                         "profile":  "mixed",
+                         "mode":  "full",
+                         "algorithm":  "beam_search"
+                     }
+                 ],
+    "repetitions":  1,
+    "beam_width":  64,
+    "metrics_discovery":  "filesystem delta, no decoded console paths",
+    "log_decode":  "strict UTF-8, falling back to Windows culture ANSI code page",
+    "expected_runs":  32,
+    "timeout_seconds_per_process":  180,
+    "timing_protocol":  "one fresh Maven/JVM process per case; planner-only timer; no warm-up exclusion",
+    "declaration_version":  "synthetic-platform-v1",
+    "note":  "Declared capabilities only; no host probing, ABI tests or cryptographic verification. Chain input, fixed nodes/resources and original planner scoring.",
+    "maven_version_output":  "Apache Maven 3.10.0 (c43a36b8d67be7e0805a411bc0898af1a51f5472)\r\nMaven home: D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\apache-maven-3.10.0\r\nJava version: 21.0.12.1, vendor: Eclipse Adoptium, runtime: D:\\JDK21\r\nDefault locale: zh_CN, platform encoding: UTF-8, time zone: Asia/Shanghai\r\nOS name: \"windows 11\", version: \"10.0\", arch: \"amd64\", family: \"windows\"",
+    "completed_runs":  32,
+    "finished_at":  "2026-10-20T13:49:11.7240300+08:00"
+}

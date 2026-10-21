@@ -1,0 +1,6 @@
+﻿id,service_id,os,cpu_mips,memory_mib,package_mib,startup_seconds,architecture,runtime,apis,drivers,security,origin,evidence
+long-0-linux,long-0,LINUX,1,1,10,0.1,X86_64,LINUX_CONTAINER,,,,SYNTHETIC,hand-constructed-counterexample
+long-1-linux,long-1,LINUX,1,1,10,0.1,X86_64,LINUX_CONTAINER,,,,SYNTHETIC,hand-constructed-counterexample
+long-2-linux,long-2,LINUX,1,1,10,0.1,X86_64,LINUX_CONTAINER,,,,SYNTHETIC,hand-constructed-counterexample
+long-3-linux,long-3,LINUX,1,1,10,0.1,X86_64,LINUX_CONTAINER,,,,SYNTHETIC,hand-constructed-counterexample
+standalone-linux,standalone,LINUX,3,1,10,0.1,X86_64,LINUX_CONTAINER,,,,SYNTHETIC,hand-constructed-counterexample

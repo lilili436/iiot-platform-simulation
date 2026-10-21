@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "assertions": 75,
+  "scope": "all six restored ONLINE nodes selectable; only ONLINE/OFFLINE/CAPABILITY_GAP labels"
+}

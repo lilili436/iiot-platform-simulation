@@ -1,0 +1,353 @@
+﻿[INFO] Scanning for projects...
+[INFO] Loaded 24145 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ------------------< org.example.iiot:iiot-simulation >------------------
+[INFO] Building iiot-simulation 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- exec:3.5.0:java (default-cli) @ iiot-simulation ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Initialising...
+Scenario: pressure
+Chains: 5
+
+=== Simulated node inventory ===
+ID         OS         Cores  TotalMIPS    RAM_MiB     BW_MiBps
+linux-01   LINUX          2       3000       1536        100.0
+linux-02   LINUX          1       1000        512         50.0
+win-01     WINDOWS        2       2500       1792        100.0
+win-02     WINDOWS        1       1000        512         50.0
+vx-01      VXWORKS        1        500        256         20.0
+vx-02      VXWORKS        1        300        128         10.0
+Total nodes: 6
+
+=== Service inventory ===
+Service: collect-c1 | Depends on: []
+  collect-linux-c1     OS=LINUX    CPU=   300 RAM= 128 Package= 12.0 Start=0.4s
+  collect-win-c1       OS=WINDOWS  CPU=   400 RAM= 192 Package= 20.0 Start=0.6s
+  collect-vx-c1        OS=VXWORKS  CPU=   100 RAM=  32 Package=  2.0 Start=0.1s
+Service: preprocess-c1 | Depends on: [collect-c1]
+  preprocess-linux-c1  OS=LINUX    CPU=   800 RAM= 512 Package= 30.0 Start=0.8s
+  preprocess-win-c1    OS=WINDOWS  CPU=   900 RAM= 512 Package= 45.0 Start=1.0s
+  preprocess-vx-c1     OS=VXWORKS  CPU=   300 RAM= 128 Package=  4.0 Start=0.2s
+Service: detect-c1 | Depends on: [preprocess-c1]
+  detect-linux-c1      OS=LINUX    CPU=  2000 RAM=1024 Package=100.0 Start=1.2s
+  detect-win-c1        OS=WINDOWS  CPU=  2200 RAM=1536 Package=150.0 Start=1.5s
+Service: alert-c1 | Depends on: [detect-c1]
+  alert-linux-c1       OS=LINUX    CPU=   200 RAM= 128 Package= 10.0 Start=0.3s
+  alert-win-c1         OS=WINDOWS  CPU=   250 RAM= 192 Package= 15.0 Start=0.4s
+  alert-vx-c1          OS=VXWORKS  CPU=   100 RAM=  32 Package=  1.0 Start=0.1s
+Service: collect-c2 | Depends on: []
+  collect-linux-c2     OS=LINUX    CPU=   300 RAM= 128 Package= 12.0 Start=0.4s
+  collect-win-c2       OS=WINDOWS  CPU=   400 RAM= 192 Package= 20.0 Start=0.6s
+  collect-vx-c2        OS=VXWORKS  CPU=   100 RAM=  32 Package=  2.0 Start=0.1s
+Service: preprocess-c2 | Depends on: [collect-c2]
+  preprocess-linux-c2  OS=LINUX    CPU=   800 RAM= 512 Package= 30.0 Start=0.8s
+  preprocess-win-c2    OS=WINDOWS  CPU=   900 RAM= 512 Package= 45.0 Start=1.0s
+  preprocess-vx-c2     OS=VXWORKS  CPU=   300 RAM= 128 Package=  4.0 Start=0.2s
+Service: detect-c2 | Depends on: [preprocess-c2]
+  detect-linux-c2      OS=LINUX    CPU=  2000 RAM=1024 Package=100.0 Start=1.2s
+  detect-win-c2        OS=WINDOWS  CPU=  2200 RAM=1536 Package=150.0 Start=1.5s
+Service: alert-c2 | Depends on: [detect-c2]
+  alert-linux-c2       OS=LINUX    CPU=   200 RAM= 128 Package= 10.0 Start=0.3s
+  alert-win-c2         OS=WINDOWS  CPU=   250 RAM= 192 Package= 15.0 Start=0.4s
+  alert-vx-c2          OS=VXWORKS  CPU=   100 RAM=  32 Package=  1.0 Start=0.1s
+Service: collect-c3 | Depends on: []
+  collect-linux-c3     OS=LINUX    CPU=   300 RAM= 128 Package= 12.0 Start=0.4s
+  collect-win-c3       OS=WINDOWS  CPU=   400 RAM= 192 Package= 20.0 Start=0.6s
+  collect-vx-c3        OS=VXWORKS  CPU=   100 RAM=  32 Package=  2.0 Start=0.1s
+Service: preprocess-c3 | Depends on: [collect-c3]
+  preprocess-linux-c3  OS=LINUX    CPU=   800 RAM= 512 Package= 30.0 Start=0.8s
+  preprocess-win-c3    OS=WINDOWS  CPU=   900 RAM= 512 Package= 45.0 Start=1.0s
+  preprocess-vx-c3     OS=VXWORKS  CPU=   300 RAM= 128 Package=  4.0 Start=0.2s
+Service: detect-c3 | Depends on: [preprocess-c3]
+  detect-linux-c3      OS=LINUX    CPU=  2000 RAM=1024 Package=100.0 Start=1.2s
+  detect-win-c3        OS=WINDOWS  CPU=  2200 RAM=1536 Package=150.0 Start=1.5s
+Service: alert-c3 | Depends on: [detect-c3]
+  alert-linux-c3       OS=LINUX    CPU=   200 RAM= 128 Package= 10.0 Start=0.3s
+  alert-win-c3         OS=WINDOWS  CPU=   250 RAM= 192 Package= 15.0 Start=0.4s
+  alert-vx-c3          OS=VXWORKS  CPU=   100 RAM=  32 Package=  1.0 Start=0.1s
+Service: collect-c4 | Depends on: []
+  collect-linux-c4     OS=LINUX    CPU=   300 RAM= 128 Package= 12.0 Start=0.4s
+  collect-win-c4       OS=WINDOWS  CPU=   400 RAM= 192 Package= 20.0 Start=0.6s
+  collect-vx-c4        OS=VXWORKS  CPU=   100 RAM=  32 Package=  2.0 Start=0.1s
+Service: preprocess-c4 | Depends on: [collect-c4]
+  preprocess-linux-c4  OS=LINUX    CPU=   800 RAM= 512 Package= 30.0 Start=0.8s
+  preprocess-win-c4    OS=WINDOWS  CPU=   900 RAM= 512 Package= 45.0 Start=1.0s
+  preprocess-vx-c4     OS=VXWORKS  CPU=   300 RAM= 128 Package=  4.0 Start=0.2s
+Service: detect-c4 | Depends on: [preprocess-c4]
+  detect-linux-c4      OS=LINUX    CPU=  2000 RAM=1024 Package=100.0 Start=1.2s
+  detect-win-c4        OS=WINDOWS  CPU=  2200 RAM=1536 Package=150.0 Start=1.5s
+Service: alert-c4 | Depends on: [detect-c4]
+  alert-linux-c4       OS=LINUX    CPU=   200 RAM= 128 Package= 10.0 Start=0.3s
+  alert-win-c4         OS=WINDOWS  CPU=   250 RAM= 192 Package= 15.0 Start=0.4s
+  alert-vx-c4          OS=VXWORKS  CPU=   100 RAM=  32 Package=  1.0 Start=0.1s
+Service: collect-c5 | Depends on: []
+  collect-linux-c5     OS=LINUX    CPU=   300 RAM= 128 Package= 12.0 Start=0.4s
+  collect-win-c5       OS=WINDOWS  CPU=   400 RAM= 192 Package= 20.0 Start=0.6s
+  collect-vx-c5        OS=VXWORKS  CPU=   100 RAM=  32 Package=  2.0 Start=0.1s
+Service: preprocess-c5 | Depends on: [collect-c5]
+  preprocess-linux-c5  OS=LINUX    CPU=   800 RAM= 512 Package= 30.0 Start=0.8s
+  preprocess-win-c5    OS=WINDOWS  CPU=   900 RAM= 512 Package= 45.0 Start=1.0s
+  preprocess-vx-c5     OS=VXWORKS  CPU=   300 RAM= 128 Package=  4.0 Start=0.2s
+Service: detect-c5 | Depends on: [preprocess-c5]
+  detect-linux-c5      OS=LINUX    CPU=  2000 RAM=1024 Package=100.0 Start=1.2s
+  detect-win-c5        OS=WINDOWS  CPU=  2200 RAM=1536 Package=150.0 Start=1.5s
+Service: alert-c5 | Depends on: [detect-c5]
+  alert-linux-c5       OS=LINUX    CPU=   200 RAM= 128 Package= 10.0 Start=0.3s
+  alert-win-c5         OS=WINDOWS  CPU=   250 RAM= 192 Package= 15.0 Start=0.4s
+  alert-vx-c5          OS=VXWORKS  CPU=   100 RAM=  32 Package=  1.0 Start=0.1s
+Total services: 20
+Total variants: 55
+
+=== Compatible placements ===
+Service: collect-c1 | Candidate placements: 6
+  linux-01 [collect-linux-c1]
+  linux-02 [collect-linux-c1]
+  win-01 [collect-win-c1]
+  win-02 [collect-win-c1]
+  vx-01 [collect-vx-c1]
+  vx-02 [collect-vx-c1]
+Service: preprocess-c1 | Candidate placements: 6
+  linux-01 [preprocess-linux-c1]
+  linux-02 [preprocess-linux-c1]
+  win-01 [preprocess-win-c1]
+  win-02 [preprocess-win-c1]
+  vx-01 [preprocess-vx-c1]
+  vx-02 [preprocess-vx-c1]
+Service: detect-c1 | Candidate placements: 2
+  linux-01 [detect-linux-c1]
+  win-01 [detect-win-c1]
+Service: alert-c1 | Candidate placements: 6
+  linux-01 [alert-linux-c1]
+  linux-02 [alert-linux-c1]
+  win-01 [alert-win-c1]
+  win-02 [alert-win-c1]
+  vx-01 [alert-vx-c1]
+  vx-02 [alert-vx-c1]
+Service: collect-c2 | Candidate placements: 6
+  linux-01 [collect-linux-c2]
+  linux-02 [collect-linux-c2]
+  win-01 [collect-win-c2]
+  win-02 [collect-win-c2]
+  vx-01 [collect-vx-c2]
+  vx-02 [collect-vx-c2]
+Service: preprocess-c2 | Candidate placements: 6
+  linux-01 [preprocess-linux-c2]
+  linux-02 [preprocess-linux-c2]
+  win-01 [preprocess-win-c2]
+  win-02 [preprocess-win-c2]
+  vx-01 [preprocess-vx-c2]
+  vx-02 [preprocess-vx-c2]
+Service: detect-c2 | Candidate placements: 2
+  linux-01 [detect-linux-c2]
+  win-01 [detect-win-c2]
+Service: alert-c2 | Candidate placements: 6
+  linux-01 [alert-linux-c2]
+  linux-02 [alert-linux-c2]
+  win-01 [alert-win-c2]
+  win-02 [alert-win-c2]
+  vx-01 [alert-vx-c2]
+  vx-02 [alert-vx-c2]
+Service: collect-c3 | Candidate placements: 6
+  linux-01 [collect-linux-c3]
+  linux-02 [collect-linux-c3]
+  win-01 [collect-win-c3]
+  win-02 [collect-win-c3]
+  vx-01 [collect-vx-c3]
+  vx-02 [collect-vx-c3]
+Service: preprocess-c3 | Candidate placements: 6
+  linux-01 [preprocess-linux-c3]
+  linux-02 [preprocess-linux-c3]
+  win-01 [preprocess-win-c3]
+  win-02 [preprocess-win-c3]
+  vx-01 [preprocess-vx-c3]
+  vx-02 [preprocess-vx-c3]
+Service: detect-c3 | Candidate placements: 2
+  linux-01 [detect-linux-c3]
+  win-01 [detect-win-c3]
+Service: alert-c3 | Candidate placements: 6
+  linux-01 [alert-linux-c3]
+  linux-02 [alert-linux-c3]
+  win-01 [alert-win-c3]
+  win-02 [alert-win-c3]
+  vx-01 [alert-vx-c3]
+  vx-02 [alert-vx-c3]
+Service: collect-c4 | Candidate placements: 6
+  linux-01 [collect-linux-c4]
+  linux-02 [collect-linux-c4]
+  win-01 [collect-win-c4]
+  win-02 [collect-win-c4]
+  vx-01 [collect-vx-c4]
+  vx-02 [collect-vx-c4]
+Service: preprocess-c4 | Candidate placements: 6
+  linux-01 [preprocess-linux-c4]
+  linux-02 [preprocess-linux-c4]
+  win-01 [preprocess-win-c4]
+  win-02 [preprocess-win-c4]
+  vx-01 [preprocess-vx-c4]
+  vx-02 [preprocess-vx-c4]
+Service: detect-c4 | Candidate placements: 2
+  linux-01 [detect-linux-c4]
+  win-01 [detect-win-c4]
+Service: alert-c4 | Candidate placements: 6
+  linux-01 [alert-linux-c4]
+  linux-02 [alert-linux-c4]
+  win-01 [alert-win-c4]
+  win-02 [alert-win-c4]
+  vx-01 [alert-vx-c4]
+  vx-02 [alert-vx-c4]
+Service: collect-c5 | Candidate placements: 6
+  linux-01 [collect-linux-c5]
+  linux-02 [collect-linux-c5]
+  win-01 [collect-win-c5]
+  win-02 [collect-win-c5]
+  vx-01 [collect-vx-c5]
+  vx-02 [collect-vx-c5]
+Service: preprocess-c5 | Candidate placements: 6
+  linux-01 [preprocess-linux-c5]
+  linux-02 [preprocess-linux-c5]
+  win-01 [preprocess-win-c5]
+  win-02 [preprocess-win-c5]
+  vx-01 [preprocess-vx-c5]
+  vx-02 [preprocess-vx-c5]
+Service: detect-c5 | Candidate placements: 2
+  linux-01 [detect-linux-c5]
+  win-01 [detect-win-c5]
+Service: alert-c5 | Candidate placements: 6
+  linux-01 [alert-linux-c5]
+  linux-02 [alert-linux-c5]
+  win-01 [alert-win-c5]
+  win-02 [alert-win-c5]
+  vx-01 [alert-vx-c5]
+  vx-02 [alert-vx-c5]
+
+
+=== Scarcity order ===
+collect-c1     candidates=6 depends=[]
+preprocess-c1  candidates=6 depends=[collect-c1]
+detect-c1      candidates=2 depends=[preprocess-c1]
+alert-c1       candidates=6 depends=[detect-c1]
+collect-c2     candidates=6 depends=[]
+preprocess-c2  candidates=6 depends=[collect-c2]
+detect-c2      candidates=2 depends=[preprocess-c2]
+alert-c2       candidates=6 depends=[detect-c2]
+collect-c3     candidates=6 depends=[]
+preprocess-c3  candidates=6 depends=[collect-c3]
+detect-c3      candidates=2 depends=[preprocess-c3]
+alert-c3       candidates=6 depends=[detect-c3]
+collect-c4     candidates=6 depends=[]
+preprocess-c4  candidates=6 depends=[collect-c4]
+detect-c4      candidates=2 depends=[preprocess-c4]
+alert-c4       candidates=6 depends=[detect-c4]
+collect-c5     candidates=6 depends=[]
+preprocess-c5  candidates=6 depends=[collect-c5]
+detect-c5      candidates=2 depends=[preprocess-c5]
+alert-c5       candidates=6 depends=[detect-c5]
+=== Rejection examples ===
+Resource rejection: [CPU_INSUFFICIENT: required=200.0, capacity=100.0, MEMORY_INSUFFICIENT: required=128, capacity=64]
+OS rejection: [OS_MISMATCH: required=LINUX, actual=WINDOWS]
+
+Beam width: 64
+=== Placement plan: beam_search ===
+collect-c1   -> vx-01      | Variant: collect-vx-c1
+preprocess-c1 -> vx-01      | Variant: preprocess-vx-c1
+detect-c1    -> linux-01   | Variant: detect-linux-c1
+alert-c1     -> linux-01   | Variant: alert-linux-c1
+collect-c2   -> linux-02   | Variant: collect-linux-c2
+preprocess-c2 -> vx-02      | Variant: preprocess-vx-c2
+detect-c2    -> win-01     | Variant: detect-win-c2
+alert-c2     -> vx-01      | Variant: alert-vx-c2
+collect-c3   -> linux-02   | Variant: collect-linux-c3
+preprocess-c3 -> win-02     | Variant: preprocess-win-c3
+collect-c4   -> linux-01   | Variant: collect-linux-c4
+collect-c5   -> linux-01   | Variant: collect-linux-c5
+REJECTED: detect-c3 | NO_FEASIBLE_PLACEMENT
+REJECTED: alert-c3 | DEPENDENCY_REJECTED
+REJECTED: preprocess-c4 | NO_FEASIBLE_PLACEMENT
+REJECTED: detect-c4 | DEPENDENCY_REJECTED
+REJECTED: alert-c4 | DEPENDENCY_REJECTED
+REJECTED: preprocess-c5 | NO_FEASIBLE_PLACEMENT
+REJECTED: detect-c5 | DEPENDENCY_REJECTED
+REJECTED: alert-c5 | DEPENDENCY_REJECTED
+Accepted: 12 | Rejected: 8
+
+=== Reserved node resources ===
+linux-01   CPU: 2800/3000 MIPS | RAM: 1408/1536 MiB
+linux-02   CPU: 600/1000 MIPS | RAM: 256/512 MiB
+win-01     CPU: 2200/2500 MIPS | RAM: 1536/1792 MiB
+win-02     CPU: 900/1000 MIPS | RAM: 512/512 MiB
+vx-01      CPU: 500/500 MIPS | RAM: 192/256 MiB
+vx-02      CPU: 300/300 MIPS | RAM: 128/128 MiB
+
+=== Deployment events ===
+Starting CloudSim version 7.0
+t= 0.000s TRANSFER collect-c1   @ vx-01
+t= 0.000s TRANSFER collect-c2   @ linux-02
+Entities started.
+t= 0.100s STARTUP  collect-c1   @ vx-01
+t= 0.200s READY    collect-c1   @ vx-01
+t= 0.200s TRANSFER preprocess-c1 @ vx-01
+t= 0.240s STARTUP  collect-c2   @ linux-02
+t= 0.400s STARTUP  preprocess-c1 @ vx-01
+t= 0.600s READY    preprocess-c1 @ vx-01
+t= 0.600s TRANSFER detect-c1    @ linux-01
+t= 0.640s READY    collect-c2   @ linux-02
+t= 0.640s TRANSFER collect-c3   @ linux-02
+t= 0.640s TRANSFER preprocess-c2 @ vx-02
+t= 0.880s STARTUP  collect-c3   @ linux-02
+t= 1.040s STARTUP  preprocess-c2 @ vx-02
+t= 1.240s READY    preprocess-c2 @ vx-02
+t= 1.240s TRANSFER detect-c2    @ win-01
+t= 1.280s READY    collect-c3   @ linux-02
+t= 1.280s TRANSFER preprocess-c3 @ win-02
+t= 1.600s STARTUP  detect-c1    @ linux-01
+t= 2.180s STARTUP  preprocess-c3 @ win-02
+t= 2.740s STARTUP  detect-c2    @ win-01
+t= 2.800s READY    detect-c1    @ linux-01
+t= 2.800s TRANSFER alert-c1     @ linux-01
+t= 2.900s STARTUP  alert-c1     @ linux-01
+t= 3.180s READY    preprocess-c3 @ win-02
+t= 3.200s READY    alert-c1     @ linux-01
+t= 3.200s TRANSFER collect-c4   @ linux-01
+t= 3.320s STARTUP  collect-c4   @ linux-01
+t= 3.720s READY    collect-c4   @ linux-01
+t= 3.720s TRANSFER collect-c5   @ linux-01
+t= 3.840s STARTUP  collect-c5   @ linux-01
+t= 4.240s READY    detect-c2    @ win-01
+t= 4.240s TRANSFER alert-c2     @ vx-01
+t= 4.240s READY    collect-c5   @ linux-01
+t= 4.290s STARTUP  alert-c2     @ vx-01
+t= 4.390s READY    alert-c2     @ vx-01
+4.39: Simulation: No more future events
+4.39: CloudInformationService is shutting down...
+4.39: CloudInformationService: Notify all CloudSim entities for shutting down.
+4.39: Deployment is shutting down...
+Simulation completed.
+Ready services: 12
+Deployment simulation time: 4.390 s
+
+=== Metrics summary ===
+Requested: 20 | Accepted: 12 | Ready: 12
+Active nodes: 6/6
+Model admission: 60.00%
+Simulated ready ratio: 60.00%
+CPU reserved (all nodes): 87.95%
+RAM reserved (all nodes): 85.14%
+CPU reserved (active nodes): 87.95%
+RAM reserved (active nodes): 85.14%
+Combined reserved (active nodes): 86.54%
+Deployment simulation time: 4.390 s
+Planner wall time: 26.315 ms
+Workflows requested: 5 | Fully ready: 2
+Workflow ready ratio: 40.00%
+CSV saved: D:\BaiduNetdiskDownload\考查\工业互联网安全\simulation\results\pressure-beam_search-18241696895143850842.csv
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.507 s
+[INFO] Finished at: 2026-10-20T11:48:44+08:00
+[INFO] ------------------------------------------------------------------------
+

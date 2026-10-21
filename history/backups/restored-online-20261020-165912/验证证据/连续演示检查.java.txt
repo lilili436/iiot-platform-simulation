@@ -1,0 +1,77 @@
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import org.example.iiot.demo.DemoEngine;
+import org.example.iiot.config.ScenarioLoader;
+import org.example.iiot.Json;
+
+public class ContinuousCheck {
+    static int assertions;
+    static List<Map<String,Object>> evidence=new ArrayList<>();
+    static void check(boolean ok,String name){assertions++;if(!ok)throw new AssertionError(name);}
+    @SuppressWarnings("unchecked") static List<Map<String,Object>> list(Map<String,Object>s,String key){return (List<Map<String,Object>>)s.get(key);}
+    static int size(Map<String,Object>s,String key){return ((Collection<?>)s.get(key)).size();}
+    static String target(Map<String,Object>s,String type){
+        String stage=type.equals("inject_runtime")?"detect":"collect";
+        return list(s,"services").stream().filter(x->x.get("stage").equals(stage)).map(x->(String)x.get("node")).findFirst().orElseThrow();
+    }
+    static void invalid(DemoEngine e,String action,String node,String name){
+        Map<String,Object> before=e.state();boolean rejected=false;
+        try{e.action(action,node,"");}catch(IllegalArgumentException ex){rejected=true;}
+        check(rejected,name);
+        check(Json.write(before).equals(Json.write(e.state())),"failed action is atomic: "+name);
+    }
+    public static void main(String[]args)throws Exception{
+        var data=ScenarioLoader.load(Path.of("configs/demo-industrial"));
+        for(String algorithm:List.of("beam_search","first_fit","round_robin","best_fit")){
+            var engine=new DemoEngine(data,Files.createTempDirectory("iiot-sequence-").resolve("events.jsonl"));
+            var state=engine.action("reset","",algorithm);engine.action("pause","","");
+            Set<String> priorOffline=new HashSet<>();int round=0,previousTick=0,previousEvents=0;
+            for(String type:List.of("inject_offline","inject_driver","inject_runtime","inject_heat","inject_heat")){
+                check((boolean)state.get("can_inject"),"next round allowed");
+                String node=type.equals("inject_heat")?"":target(state,type);
+                state=engine.action(type,node,"");round++;
+                check(state.get("phase").equals("FAULT")&&!(boolean)state.get("can_inject"),"active fault blocks next injection");
+                invalid(engine,"inject_heat","","cannot stack before recovery");
+                invalid(engine,"repair","","cannot repair before diagnosis");
+                state=engine.action("diagnose","","");
+                check(size(state,"diagnosis")>0,"diagnosis available");
+                state=engine.action("repair","","");
+                check(state.get("phase").equals("VERIFYING"),"repair produces verifiable plan");
+                invalid(engine,"inject_heat","","cannot inject before verification");
+                if(type.equals("inject_heat")){
+                    state=engine.action("verify","","");check(state.get("phase").equals("VERIFYING"),"early heat verification waits");
+                    invalid(engine,"inject_offline",target(state,"inject_offline"),"cannot bypass normal sampling");
+                    for(int i=0;i<7;i++)state=engine.action("step","","");
+                }
+                state=engine.action("verify","","");
+                check(state.get("phase").equals("RECOVERED")&&(int)state.get("ready")==4,"business recovered");
+                check((boolean)state.get("can_inject"),"selectors can reopen after recovery");
+                check(size(state,"completed_episodes")==round,"episodes archived without reset");
+                check((int)state.get("episode")==round,"episode numbering continues");
+                check((int)state.get("tick")>=previousTick,"clock never resets between faults");
+                check(size(state,"history")>previousEvents,"history retained between faults");
+                previousTick=(int)state.get("tick");previousEvents=size(state,"history");
+                if(type.equals("inject_offline"))priorOffline.add(node);
+                for(String offline:priorOffline)check(list(state,"nodes").stream().anyMatch(n->n.get("id").equals(offline)&&n.get("status").equals("OFFLINE")),"prior isolated node remains offline");
+                if(type.equals("inject_driver"))check(list(state,"nodes").stream().anyMatch(n->n.get("id").equals(node)&&n.get("status").equals("CAPABILITY_GAP")),"driver gap visible");
+                if(type.equals("inject_runtime"))check(list(state,"nodes").stream().anyMatch(n->n.get("id").equals(node)&&n.get("status").equals("CAPABILITY_GAP")),"runtime gap visible");
+                for(String offline:priorOffline)invalid(engine,"inject_offline",offline,"cannot reinject already offline node");
+                state=engine.state();
+                int count=size(state,"completed_episodes");
+                state=engine.action("verify","","");check(size(state,"completed_episodes")==count,"repeat verification idempotent");
+                evidence.add(Map.of("algorithm",algorithm,"round",round,"fault",type,"target",node,"completed",count,"ready",state.get("ready")));
+            }
+            check(size(state,"completed_faults")==4,"all four types completed; repeated heat allowed");
+            check((boolean)state.get("cooling_active"),"cooling continues independently of new episode");
+            check(list(state,"nodes").stream().anyMatch(n->n.get("status").equals("CAPABILITY_GAP")),"prior capability gaps retained across heat episode");
+            state=engine.action("reset","",algorithm);
+            check(size(state,"completed_episodes")==0&&size(state,"completed_faults")==0,"optional reset clears round summaries");
+            check((int)state.get("tick")==0&&(int)state.get("episode")==0,"optional reset restarts clock and round");
+            check(list(state,"nodes").stream().allMatch(n->n.get("status").equals("ONLINE")),"optional reset restores every node");
+            check(size(state,"history")==1&&(int)state.get("ready")==4,"optional reset restores initial business");
+        }
+        Files.writeString(Path.of("continuous-check-results.json"),Json.write(Map.of("status","PASS","assertions",assertions,"rounds",evidence)),StandardCharsets.UTF_8);
+        System.out.println("PASS "+assertions+" assertions across "+evidence.size()+" recovery rounds without intermediate resets.");
+    }
+}

@@ -1,0 +1,5 @@
+{
+  "original_sha256": "B466615C3FA15FE58F8B5E74DD219D861465DA551589F6E821C058CA447E5CCE",
+  "patched_sha256": "5B06FE3D8C3F6F0CAE0C6881405FFA33F97E60AF4E8FD209561315C4AB9D970A",
+  "description": "Adds optional fourth beam-width argument; default 64; existing algorithms unchanged."
+}

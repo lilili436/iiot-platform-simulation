@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "data_kind": "synthetic_static_model",
+  "nodes": [
+    {
+      "id": "n00",
+      "os": "linux",
+      "arch": "x86_64",
+      "runtime": "swarm",
+      "abi": "linux-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "posix_thread"
+      ],
+      "drivers": [],
+      "security": 3,
+      "cpu_mcpu": 8000,
+      "memory_mib": 8192,
+      "speed": 0.9071334002343706,
+      "pull_mib_s": 70.67648328211651,
+      "network_ms": 5.454275511954557
+    },
+    {
+      "id": "n01",
+      "os": "windows",
+      "arch": "x86_64",
+      "runtime": "swarm",
+      "abi": "windows-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "win_thread"
+      ],
+      "drivers": [],
+      "security": 3,
+      "cpu_mcpu": 8000,
+      "memory_mib": 16384,
+      "speed": 1.166705631564025,
+      "pull_mib_s": 94.48677311172011,
+      "network_ms": 6.551555413991293
+    },
+    {
+      "id": "n02",
+      "os": "vxworks",
+      "arch": "arm64",
+      "runtime": "rtp",
+      "abi": "vxworks-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "posix_thread"
+      ],
+      "drivers": [
+        "sensor_bus"
+      ],
+      "security": 3,
+      "cpu_mcpu": 2000,
+      "memory_mib": 2048,
+      "speed": 1.3046433633257792,
+      "pull_mib_s": 21.604117926857295,
+      "network_ms": 3.755569754986846
+    },
+    {
+      "id": "n03",
+      "os": "linux",
+      "arch": "x86_64",
+      "runtime": "swarm",
+      "abi": "linux-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "posix_thread"
+      ],
+      "drivers": [],
+      "security": 2,
+      "cpu_mcpu": 8000,
+      "memory_mib": 8192,
+      "speed": 1.283865398608103,
+      "pull_mib_s": 93.9302972780796,
+      "network_ms": 8.523823251069853
+    },
+    {
+      "id": "n04",
+      "os": "windows",
+      "arch": "x86_64",
+      "runtime": "swarm",
+      "abi": "windows-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "win_thread"
+      ],
+      "drivers": [],
+      "security": 3,
+      "cpu_mcpu": 4000,
+      "memory_mib": 16384,
+      "speed": 1.047337468363027,
+      "pull_mib_s": 76.6532184066281,
+      "network_ms": 11.04312158561688
+    },
+    {
+      "id": "n05",
+      "os": "vxworks",
+      "arch": "arm64",
+      "runtime": "rtp",
+      "abi": "vxworks-demo-v1",
+      "apis": [
+        "socket",
+        "file",
+        "posix_thread"
+      ],
+      "drivers": [
+        "sensor_bus"
+      ],
+      "security": 3,
+      "cpu_mcpu": 4000,
+      "memory_mib": 2048,
+      "speed": 1.392247942217312,
+      "pull_mib_s": 13.730830828623107,
+      "network_ms": 9.855306097143245
+    }
+  ],
+  "services": [
+    {
+      "id": "s00-sensor",
+      "security": 3,
+      "deadline_ms": 100.0,
+      "variants": [
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [
+            "sensor_bus"
+          ],
+          "cpu_mcpu": 342,
+          "memory_mib": 102,
+          "exec_ms": 21.048676222818063,
+          "image_mib": 30.33411836455905,
+          "startup_ms": 541.9131872030106
+        }
+      ]
+    },
+    {
+      "id": "s01-collect",
+      "security": 1,
+      "deadline_ms": 100.0,
+      "variants": [
+        {
+          "os": "linux",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1653,
+          "memory_mib": 1024,
+          "exec_ms": 29.669961630520863,
+          "image_mib": 33.31945961023689,
+          "startup_ms": 611.1950034472574
+        },
+        {
+          "os": "linux",
+          "arch": "arm64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1653,
+          "memory_mib": 1024,
+          "exec_ms": 29.669961630520863,
+          "image_mib": 59.254978231586406,
+          "startup_ms": 144.0889919828397
+        },
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1322,
+          "memory_mib": 819,
+          "exec_ms": 23.73596930441669,
+          "image_mib": 59.35306227043719,
+          "startup_ms": 204.15418187994445
+        }
+      ]
+    },
+    {
+      "id": "s02-windows_only",
+      "security": 2,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 703,
+          "memory_mib": 153,
+          "exec_ms": 41.74784179259859,
+          "image_mib": 85.50733213623622,
+          "startup_ms": 958.2961701123446
+        }
+      ]
+    },
+    {
+      "id": "s03-gateway",
+      "security": 2,
+      "deadline_ms": 50.0,
+      "variants": [
+        {
+          "os": "linux",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1528,
+          "memory_mib": 512,
+          "exec_ms": 25.90340370587358,
+          "image_mib": 48.32086379298966,
+          "startup_ms": 670.1268043039352
+        },
+        {
+          "os": "linux",
+          "arch": "arm64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1528,
+          "memory_mib": 512,
+          "exec_ms": 25.90340370587358,
+          "image_mib": 47.819852487922674,
+          "startup_ms": 774.6869821816606
+        },
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1833,
+          "memory_mib": 614,
+          "exec_ms": 31.084084447048294,
+          "image_mib": 62.667592748756164,
+          "startup_ms": 613.5983339073665
+        },
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1222,
+          "memory_mib": 409,
+          "exec_ms": 20.722722964698864,
+          "image_mib": 32.9193854714289,
+          "startup_ms": 413.9206424865395
+        }
+      ]
+    },
+    {
+      "id": "s04-sensor",
+      "security": 3,
+      "deadline_ms": 50.0,
+      "variants": [
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [
+            "sensor_bus"
+          ],
+          "cpu_mcpu": 716,
+          "memory_mib": 409,
+          "exec_ms": 7.759944318956916,
+          "image_mib": 54.00216402453821,
+          "startup_ms": 98.46455233658085
+        }
+      ]
+    },
+    {
+      "id": "s05-windows_only",
+      "security": 1,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 649,
+          "memory_mib": 153,
+          "exec_ms": 30.048531286290775,
+          "image_mib": 22.938853842382954,
+          "startup_ms": 245.62227976053993
+        }
+      ]
+    },
+    {
+      "id": "s06-sensor",
+      "security": 1,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [
+            "sensor_bus"
+          ],
+          "cpu_mcpu": 1439,
+          "memory_mib": 819,
+          "exec_ms": 23.979057734392796,
+          "image_mib": 37.37614059027665,
+          "startup_ms": 372.20245640361367
+        }
+      ]
+    },
+    {
+      "id": "s07-sensor",
+      "security": 2,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [
+            "sensor_bus"
+          ],
+          "cpu_mcpu": 1006,
+          "memory_mib": 409,
+          "exec_ms": 14.37396504445265,
+          "image_mib": 44.97374120285379,
+          "startup_ms": 637.9043900380008
+        }
+      ]
+    },
+    {
+      "id": "s08-gateway",
+      "security": 1,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "linux",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1654,
+          "memory_mib": 128,
+          "exec_ms": 19.07977026104417,
+          "image_mib": 54.11031382880309,
+          "startup_ms": 691.5543029700607
+        },
+        {
+          "os": "linux",
+          "arch": "arm64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1654,
+          "memory_mib": 128,
+          "exec_ms": 19.07977026104417,
+          "image_mib": 27.01249354432994,
+          "startup_ms": 612.0424545535934
+        },
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1984,
+          "memory_mib": 153,
+          "exec_ms": 22.895724313253005,
+          "image_mib": 21.839280629515507,
+          "startup_ms": 305.18685096897593
+        },
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1323,
+          "memory_mib": 102,
+          "exec_ms": 15.263816208835337,
+          "image_mib": 52.49664641579225,
+          "startup_ms": 266.2202435630071
+        }
+      ]
+    },
+    {
+      "id": "s09-compute",
+      "security": 3,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "linux",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 848,
+          "memory_mib": 128,
+          "exec_ms": 29.330729393585376,
+          "image_mib": 54.3944489486599,
+          "startup_ms": 755.5638013328505
+        },
+        {
+          "os": "linux",
+          "arch": "arm64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 848,
+          "memory_mib": 128,
+          "exec_ms": 29.330729393585376,
+          "image_mib": 52.151934114405805,
+          "startup_ms": 151.79782598233038
+        },
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1017,
+          "memory_mib": 153,
+          "exec_ms": 35.19687527230245,
+          "image_mib": 22.453272650688824,
+          "startup_ms": 278.35732273253996
+        }
+      ]
+    },
+    {
+      "id": "s10-windows_only",
+      "security": 1,
+      "deadline_ms": 25.0,
+      "variants": [
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "windows-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 704,
+          "memory_mib": 614,
+          "exec_ms": 35.81901281830087,
+          "image_mib": 21.74787562382915,
+          "startup_ms": 628.6235029859444
+        }
+      ]
+    },
+    {
+      "id": "s11-collect",
+      "security": 1,
+      "deadline_ms": 100.0,
+      "variants": [
+        {
+          "os": "linux",
+          "arch": "x86_64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1381,
+          "memory_mib": 256,
+          "exec_ms": 26.541812113099876,
+          "image_mib": 14.275942709951401,
+          "startup_ms": 575.5430364306851
+        },
+        {
+          "os": "linux",
+          "arch": "arm64",
+          "runtime": "swarm",
+          "abi": "linux-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1381,
+          "memory_mib": 256,
+          "exec_ms": 26.541812113099876,
+          "image_mib": 48.09647880340604,
+          "startup_ms": 534.4199796844284
+        },
+        {
+          "os": "vxworks",
+          "arch": "arm64",
+          "runtime": "rtp",
+          "abi": "vxworks-demo-v1",
+          "apis": [
+            "socket"
+          ],
+          "drivers": [],
+          "cpu_mcpu": 1104,
+          "memory_mib": 204,
+          "exec_ms": 21.2334496904799,
+          "image_mib": 54.810548711981724,
+          "startup_ms": 119.20240851986696
+        }
+      ]
+    }
+  ]
+}

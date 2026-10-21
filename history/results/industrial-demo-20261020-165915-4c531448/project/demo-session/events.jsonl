@@ -1,0 +1,31 @@
+{"kind":"READY","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","step":0,"episode":0}
+{"kind":"READY","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","step":0,"episode":0}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_offline @ win-01；服务可用性按当前节点声明和依赖重新计算。","step":4,"episode":1}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":13,"episode":1}
+{"kind":"NODE_REPAIRED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"节点 win-01 已恢复在线，驱动和运行环境恢复到配置基线；完成恢复验证后可再次注入故障。","step":24,"episode":1}
+{"kind":"REPLAN","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；目标节点已恢复，使用完整能力约束重新核对部署。","step":24,"episode":1}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":28,"episode":1}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_driver @ vx-01；服务可用性按当前节点声明和依赖重新计算。","step":48,"episode":2}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 4 条。","step":60,"episode":2}
+{"kind":"NODE_REPAIRED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"节点 vx-01 已恢复在线，驱动和运行环境恢复到配置基线；完成恢复验证后可再次注入故障。","step":66,"episode":2}
+{"kind":"REPLAN","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；目标节点已恢复，使用完整能力约束重新核对部署。","step":66,"episode":2}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":70,"episode":2}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_heat @ motor-01；服务可用性按当前节点声明和依赖重新计算。","step":105,"episode":3}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":114,"episode":3}
+{"kind":"COOLING","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。","step":138,"episode":3}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":141,"episode":3}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_heat @ motor-01；服务可用性按当前节点声明和依赖重新计算。","step":146,"episode":4}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 1 条。","step":174,"episode":4}
+{"kind":"COOLING","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。","step":175,"episode":4}
+{"kind":"VERIFY_WAIT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"继续采样：需要温度/振动正常，工艺故障还需连续3次正常。","step":175,"episode":4}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":178,"episode":4}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_runtime @ linux-01；服务可用性按当前节点声明和依赖重新计算。","step":454,"episode":5}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 2 条。","step":456,"episode":5}
+{"kind":"NODE_REPAIRED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"节点 linux-01 已恢复在线，驱动和运行环境恢复到配置基线；完成恢复验证后可再次注入故障。","step":457,"episode":5}
+{"kind":"REPLAN","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；目标节点已恢复，使用完整能力约束重新核对部署。","step":457,"episode":5}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":457,"episode":5}
+{"kind":"FAULT","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"注入故障：inject_offline @ vx-01；服务可用性按当前节点声明和依赖重新计算。","step":469,"episode":6}
+{"kind":"DIAGNOSIS","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"已检查 4 项服务及其依赖，诊断记录 4 条。","step":478,"episode":6}
+{"kind":"NODE_REPAIRED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"节点 vx-01 已恢复在线，驱动和运行环境恢复到配置基线；完成恢复验证后可再次注入故障。","step":481,"episode":6}
+{"kind":"REPLAN","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"重新调用 beam_search 与完整兼容检查，CloudSim部署完成，迁移/新增 0 项；目标节点已恢复，使用完整能力约束重新核对部署。","step":481,"episode":6}
+{"kind":"RECOVERED","session":"5d972bd3-bbd9-4731-8e07-f23ae15a9821","text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","step":482,"episode":6}

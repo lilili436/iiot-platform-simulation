@@ -1,0 +1,57 @@
+--- BeamSearchPlanner.java (baseline)
++++ BeamSearchPlanner.java (isolated ablation)
+@@ -60,14 +60,24 @@
+             List<ServiceSpec> services,
+             int beamWidth
+     ) {
++        return plan(nodes, services, beamWidth, true);
++    }
++
++    public static Result plan(
++            List<NodeSpec> nodes,
++            List<ServiceSpec> services,
++            int beamWidth,
++            boolean useScarcity
++    ) {
+         if (beamWidth <= 0) {
+             throw new IllegalArgumentException(
+                     "beamWidth must be positive."
+             );
+         }
+ 
+-        List<ServiceSpec> ordered =
+-                ScarcityOrder.order(nodes, services);
++        List<ServiceSpec> ordered = useScarcity
++                ? ScarcityOrder.order(nodes, services)
++                : checkedInputOrder(nodes, services);
+ 
+         List<State> beam = List.of(new State(nodes.size()));
+ 
+@@ -170,6 +180,27 @@
+         );
+     }
+ 
++    private static List<ServiceSpec> checkedInputOrder(
++            List<NodeSpec> nodes, List<ServiceSpec> services
++    ) {
++        Set<String> nodeIds = new HashSet<>();
++        for (NodeSpec node : nodes) {
++            if (!nodeIds.add(node.id())) {
++                throw new IllegalArgumentException("Duplicate node: " + node.id());
++            }
++        }
++        Set<String> seen = new HashSet<>();
++        for (ServiceSpec service : services) {
++            if (!seen.containsAll(service.dependencies()) || !seen.add(service.id())) {
++                throw new IllegalArgumentException(
++                        "Input order must have unique IDs and put dependencies first: "
++                                + service.id()
++                );
++            }
++        }
++        return List.copyOf(services);
++    }
++
+     private static State reject(
+             State state,
+             ServiceSpec service,

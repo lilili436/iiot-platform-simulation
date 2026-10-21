@@ -1,0 +1,456 @@
+{
+  "objective": "service_first",
+  "takeover_platform": "WINDOWS",
+  "session": "8a2c6126-afce-4664-a3b0-2fe063b4e597",
+  "algorithm": "beam_search",
+  "phase": "RECOVERED",
+  "playing": true,
+  "can_inject": true,
+  "episode": 1,
+  "completed_faults": [
+    "inject_driver"
+  ],
+  "completed_episodes": [
+    {
+      "takeover_platform": "WINDOWS",
+      "fault": "inject_driver",
+      "diagnosis": [
+        {
+          "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER",
+          "target": "collect-c1 @ vx-01",
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+        },
+        {
+          "reason": "UPSTREAM_UNAVAILABLE",
+          "target": "preprocess-c1 @ vx-01",
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+        },
+        {
+          "reason": "UPSTREAM_UNAVAILABLE",
+          "target": "detect-c1 @ linux-01",
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+        },
+        {
+          "reason": "UPSTREAM_UNAVAILABLE",
+          "target": "alert-c1 @ vx-01",
+          "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+        },
+        {
+          "reason": "DRIVER_MISSING",
+          "target": "vx-01",
+          "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。"
+        }
+      ],
+      "finished_step": 0,
+      "episode": 1,
+      "node": "vx-01",
+      "started_step": 0,
+      "objective": "service_first",
+      "deployment_events": [
+        {
+          "phase": "TRANSFER",
+          "node": "win-01",
+          "service": "collect-c1",
+          "time": 0.0
+        },
+        {
+          "phase": "STARTUP",
+          "node": "win-01",
+          "service": "collect-c1",
+          "time": 0.2
+        },
+        {
+          "phase": "READY",
+          "node": "win-01",
+          "service": "collect-c1",
+          "time": 0.8
+        },
+        {
+          "phase": "TRANSFER",
+          "node": "win-01",
+          "service": "preprocess-c1",
+          "time": 0.8
+        },
+        {
+          "phase": "STARTUP",
+          "node": "win-01",
+          "service": "preprocess-c1",
+          "time": 1.25
+        },
+        {
+          "phase": "READY",
+          "node": "win-01",
+          "service": "preprocess-c1",
+          "time": 2.25
+        },
+        {
+          "phase": "TRANSFER",
+          "node": "win-01",
+          "service": "alert-c1",
+          "time": 2.25
+        },
+        {
+          "phase": "STARTUP",
+          "node": "win-01",
+          "service": "alert-c1",
+          "time": 2.4
+        },
+        {
+          "phase": "READY",
+          "node": "win-01",
+          "service": "alert-c1",
+          "time": 2.8
+        }
+      ],
+      "moves": [
+        {
+          "from": "vx-01",
+          "service": "collect-c1",
+          "from_variant": "collect-vx-c1",
+          "to_os": "WINDOWS",
+          "from_os": "VXWORKS",
+          "to_variant": "collect-win-c1",
+          "to": "win-01"
+        },
+        {
+          "from": "vx-01",
+          "service": "preprocess-c1",
+          "from_variant": "preprocess-vx-c1",
+          "to_os": "WINDOWS",
+          "from_os": "VXWORKS",
+          "to_variant": "preprocess-win-c1",
+          "to": "win-01"
+        },
+        {
+          "from": "vx-01",
+          "service": "alert-c1",
+          "from_variant": "alert-vx-c1",
+          "to_os": "WINDOWS",
+          "from_os": "VXWORKS",
+          "to_variant": "alert-win-c1",
+          "to": "win-01"
+        }
+      ]
+    }
+  ],
+  "cooling_active": false,
+  "failover_policy": "PIN_HEALTHY_PREFER_STANDBY_NO_FAILBACK",
+  "standby_shortage": false,
+  "tick": 0,
+  "fault": "inject_driver",
+  "fault_node": "vx-01",
+  "normal_samples": 0,
+  "ready": 4,
+  "requested": 4,
+  "nodes": [
+    {
+      "id": "linux-01",
+      "os": "LINUX",
+      "status": "ONLINE",
+      "role": "ACTIVE",
+      "cpu": 2000.0,
+      "cpu_total": 8000.0,
+      "ram": 1024,
+      "ram_total": 8192,
+      "architecture": "X86_64",
+      "runtimes": [
+        "LINUX_CONTAINER"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    },
+    {
+      "id": "linux-02",
+      "os": "LINUX",
+      "status": "ONLINE",
+      "role": "STANDBY",
+      "cpu": 0.0,
+      "cpu_total": 3000.0,
+      "ram": 0,
+      "ram_total": 4096,
+      "architecture": "X86_64",
+      "runtimes": [
+        "LINUX_CONTAINER"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    },
+    {
+      "id": "win-01",
+      "os": "WINDOWS",
+      "status": "ONLINE",
+      "role": "ACTIVE",
+      "cpu": 1550.0,
+      "cpu_total": 8000.0,
+      "ram": 896,
+      "ram_total": 8192,
+      "architecture": "X86_64",
+      "runtimes": [
+        "WINDOWS_CONTAINER"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    },
+    {
+      "id": "win-02",
+      "os": "WINDOWS",
+      "status": "ONLINE",
+      "role": "STANDBY",
+      "cpu": 0.0,
+      "cpu_total": 3000.0,
+      "ram": 0,
+      "ram_total": 4096,
+      "architecture": "X86_64",
+      "runtimes": [
+        "WINDOWS_CONTAINER"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    },
+    {
+      "id": "vx-01",
+      "os": "VXWORKS",
+      "status": "ONLINE",
+      "role": "STANDBY",
+      "cpu": 0.0,
+      "cpu_total": 2000.0,
+      "ram": 0,
+      "ram_total": 1024,
+      "architecture": "ARM64",
+      "runtimes": [
+        "VX_RTP"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    },
+    {
+      "id": "vx-02",
+      "os": "VXWORKS",
+      "status": "ONLINE",
+      "role": "STANDBY",
+      "cpu": 0.0,
+      "cpu_total": 800.0,
+      "ram": 0,
+      "ram_total": 512,
+      "architecture": "ARM64",
+      "runtimes": [
+        "VX_RTP"
+      ],
+      "drivers": [
+        "SENSOR_DRIVER"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "collect-c1",
+      "status": "READY",
+      "node": "win-01",
+      "variant": "collect-win-c1",
+      "stage": "collect",
+      "dependencies": []
+    },
+    {
+      "id": "preprocess-c1",
+      "status": "READY",
+      "node": "win-01",
+      "variant": "preprocess-win-c1",
+      "stage": "preprocess",
+      "dependencies": [
+        "collect-c1"
+      ]
+    },
+    {
+      "id": "detect-c1",
+      "status": "READY",
+      "node": "linux-01",
+      "variant": "detect-linux-c1",
+      "stage": "detect",
+      "dependencies": [
+        "preprocess-c1"
+      ]
+    },
+    {
+      "id": "alert-c1",
+      "status": "READY",
+      "node": "win-01",
+      "variant": "alert-win-c1",
+      "stage": "alert",
+      "dependencies": [
+        "detect-c1"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "temperature": 58.0,
+      "rpm": 1480.0,
+      "step": 0,
+      "vibration": 2.2,
+      "alarm": false
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "episode": 0,
+      "text": "初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。",
+      "kind": "READY"
+    },
+    {
+      "step": 0,
+      "episode": 0,
+      "text": "接管平台：WINDOWS；仅影响后续迁移，不移动现有服务。",
+      "kind": "SETTINGS"
+    },
+    {
+      "step": 0,
+      "episode": 1,
+      "text": "注入故障：inject_driver @ vx-01；记录原部署的故障原因与依赖影响。",
+      "kind": "FAULT"
+    },
+    {
+      "step": 0,
+      "episode": 1,
+      "text": "自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。",
+      "kind": "FAILOVER"
+    },
+    {
+      "step": 0,
+      "episode": 1,
+      "text": "已检查 4 项服务及其依赖，诊断记录 5 条。",
+      "kind": "DIAGNOSIS"
+    },
+    {
+      "step": 0,
+      "episode": 1,
+      "text": "节点 vx-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。",
+      "kind": "NODE_REPAIRED"
+    },
+    {
+      "step": 0,
+      "episode": 1,
+      "text": "本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。",
+      "kind": "RECOVERED"
+    }
+  ],
+  "diagnosis": [
+    {
+      "reason": "DRIVER_MISSING: missing=SENSOR_DRIVER",
+      "target": "collect-c1 @ vx-01",
+      "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+    },
+    {
+      "reason": "UPSTREAM_UNAVAILABLE",
+      "target": "preprocess-c1 @ vx-01",
+      "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+    },
+    {
+      "reason": "UPSTREAM_UNAVAILABLE",
+      "target": "detect-c1 @ linux-01",
+      "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+    },
+    {
+      "reason": "UPSTREAM_UNAVAILABLE",
+      "target": "alert-c1 @ vx-01",
+      "detail": "原部署在注入时受到影响；已触发备用接管，当前该服务已在接管部署中可用。"
+    },
+    {
+      "reason": "DRIVER_MISSING",
+      "target": "vx-01",
+      "detail": "故障节点暂停承载业务；修复节点本身后保持现有接管部署，不自动回迁。"
+    }
+  ],
+  "moves": [
+    {
+      "from": "vx-01",
+      "service": "collect-c1",
+      "from_variant": "collect-vx-c1",
+      "to_os": "WINDOWS",
+      "from_os": "VXWORKS",
+      "to_variant": "collect-win-c1",
+      "to": "win-01"
+    },
+    {
+      "from": "vx-01",
+      "service": "preprocess-c1",
+      "from_variant": "preprocess-vx-c1",
+      "to_os": "WINDOWS",
+      "from_os": "VXWORKS",
+      "to_variant": "preprocess-win-c1",
+      "to": "win-01"
+    },
+    {
+      "from": "vx-01",
+      "service": "alert-c1",
+      "from_variant": "alert-vx-c1",
+      "to_os": "WINDOWS",
+      "from_os": "VXWORKS",
+      "to_variant": "alert-win-c1",
+      "to": "win-01"
+    }
+  ],
+  "deployment_seconds": 2.8,
+  "planning_ms": 3.9742,
+  "deployment_events": [
+    {
+      "phase": "TRANSFER",
+      "node": "win-01",
+      "service": "collect-c1",
+      "time": 0.0
+    },
+    {
+      "phase": "STARTUP",
+      "node": "win-01",
+      "service": "collect-c1",
+      "time": 0.2
+    },
+    {
+      "phase": "READY",
+      "node": "win-01",
+      "service": "collect-c1",
+      "time": 0.8
+    },
+    {
+      "phase": "TRANSFER",
+      "node": "win-01",
+      "service": "preprocess-c1",
+      "time": 0.8
+    },
+    {
+      "phase": "STARTUP",
+      "node": "win-01",
+      "service": "preprocess-c1",
+      "time": 1.25
+    },
+    {
+      "phase": "READY",
+      "node": "win-01",
+      "service": "preprocess-c1",
+      "time": 2.25
+    },
+    {
+      "phase": "TRANSFER",
+      "node": "win-01",
+      "service": "alert-c1",
+      "time": 2.25
+    },
+    {
+      "phase": "STARTUP",
+      "node": "win-01",
+      "service": "alert-c1",
+      "time": 2.4
+    },
+    {
+      "phase": "READY",
+      "node": "win-01",
+      "service": "alert-c1",
+      "time": 2.8
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "run_id": "20261020-181150-29affdd8",
+  "kind": "industrial-demo",
+  "status": "RUNNING",
+  "source_project": "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation",
+  "experiment_project": "D:\\BaiduNetdiskDownload\\考查\\工业互联网安全\\simulation\\results\\industrial-demo-20261020-181150-29affdd8\\project",
+  "port": 8765,
+  "started_at": "2026-10-20T18:11:50.3955699+08:00",
+  "scope": "Synthetic declarations and process data; fixed-order exact verification; localhost demo"
+}

@@ -1,0 +1,5 @@
+﻿item,status,evidence
+配置与精确检查,PASS,D:\BaiduNetdiskDownload\考查\工业互联网安全\simulation\results\extended-study-20261020-191716-1004abb9\project\verification\results.json
+最终集成检查,PASS,D:\BaiduNetdiskDownload\考查\工业互联网安全\simulation\results\extended-study-20261020-191716-1004abb9\project\verification\final-checks.json
+连续故障恢复,PASS,D:\BaiduNetdiskDownload\考查\工业互联网安全\simulation\results\extended-study-20261020-191716-1004abb9\report\continuous-check-results.json
+前端与HTTP接口,PASS,D:\BaiduNetdiskDownload\考查\工业互联网安全\simulation\results\extended-study-20261020-191716-1004abb9\report\ui-api-checks.json

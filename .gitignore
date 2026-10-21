@@ -1,0 +1,25 @@
+# Generated output; historical evidence under history/ remains tracked.
+/current/target/
+/current/verification/
+/current/study/
+/current/demo-session/
+/current/qa-classes/
+/runs/
+/simulation/target/
+/simulation/results/
+/cloudsim-7.0.1/modules/*/target/*
+!/cloudsim-7.0.1/modules/cloudsim/target/cloudsim-7.0.1.jar
+**/__pycache__/
+**/*.pyc
+**/node_modules/
+**/.idea/
+**/.vscode/
+**/.env
+**/.env.*
+**/settings-security.xml
+**/*.lastUpdated
+**/*.lock
+/environment/maven-repository/**/_remote.repositories
+/environment/maven-repository/**/resolver-status.properties
+/environment/maven-repository/**/maven-metadata-local.xml
+/environment/upload-receipt.json

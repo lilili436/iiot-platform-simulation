@@ -1,0 +1,85 @@
+--- SimulationMain.java (baseline)
++++ SimulationMain.java (isolated ablation)
+@@ -33,9 +33,9 @@
+ 
+     public static void main(String[] args) {
+         CloudSim.init(1, Calendar.getInstance(), false);
+-	if (args.length > 4) {
++	if (args.length > 5) {
+     		throw new IllegalArgumentException(
+-            	"Usage: <algorithm> <scenario> [chainCount] [beamWidth]"
++            	"Usage: <algorithm> <scenario> [chainCount] [beamWidth] [chain|stage]"
+     		);
+ 	}
+ 
+@@ -73,9 +73,9 @@
+ 
+         int beamWidth = 64;
+         if (args.length > 3) {
+-            if (!args[0].equals("beam_search")) {
++            if (!args[0].equals("beam_search") && !args[0].equals("beam_input")) {
+                 throw new IllegalArgumentException(
+-                        "beamWidth is supported only for beam_search."
++                        "beamWidth is supported only for beam_search or beam_input."
+                 );
+             }
+             try {
+@@ -92,6 +92,14 @@
+             }
+         }
+ 
++        String inputLayout = args.length > 4 ? args[4] : "chain";
++        if (!inputLayout.equals("chain") && !inputLayout.equals("stage")) {
++            throw new IllegalArgumentException("Input layout must be chain or stage.");
++        }
++        if (inputLayout.equals("stage") && !scenario.equals("pressure")) {
++            throw new IllegalArgumentException("Stage layout requires pressure.");
++        }
++        System.out.println("Input layout: " + inputLayout);
+         System.out.println("Scenario: " + scenario);
+ 	System.out.println("Chains: " + chainCount);
+ 
+@@ -221,7 +229,12 @@
+ 	if (scenario.equals("pressure")) {
+     		services = ScenarioFactory.replicateChains(services, chainCount);
+ 	}
+-	System.out.println("=== Service inventory ===");
++	if (inputLayout.equals("stage")) {
++            services = org.example.iiot.scenario.ServiceInputOrder.byLevel(services);
++        }
++        System.out.println("Input sequence: " + services.stream()
++                .map(ServiceSpec::id).collect(java.util.stream.Collectors.joining(",")));
++        System.out.println("=== Service inventory ===");
+ 
+ 	int totalVariants = 0;
+ 
+@@ -324,8 +337,12 @@
+ 	);
+ 	System.out.println();
+ 	String algorithm = args.length == 0 ? "first_fit" : args[0];
+-        if (algorithm.equals("beam_search")) {
++        if (algorithm.equals("beam_search") || algorithm.equals("beam_input")) {
+             System.out.println("Beam width: " + beamWidth);
++            List<ServiceSpec> planningOrder = algorithm.equals("beam_search")
++                    ? ScarcityOrder.order(nodes, services) : services;
++            System.out.println("Planning sequence: " + planningOrder.stream()
++                    .map(ServiceSpec::id).collect(java.util.stream.Collectors.joining(",")));
+         }
+ 
+ 	System.out.println(
+@@ -345,7 +362,9 @@
+             		BestFitPlanner.plan(nodes, services);
+ 
+ 		case "beam_search" ->
+-            		BeamSearchPlanner.plan(nodes, services, beamWidth);
++            		BeamSearchPlanner.plan(nodes, services, beamWidth);        case "beam_input" ->
++                BeamSearchPlanner.plan(nodes, services, beamWidth, false);
++
+ 
+     		default -> throw new IllegalArgumentException(
+             		"Unknown algorithm: " + algorithm
+@@ -431,3 +450,4 @@
+ 	);
+     }
+ }
++

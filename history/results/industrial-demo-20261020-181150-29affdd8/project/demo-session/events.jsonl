@@ -1,0 +1,87 @@
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":1,"step":11,"text":"注入故障：inject_runtime @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":1,"step":11,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 1 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":1,"step":13,"text":"已检查 4 项服务及其依赖，诊断记录 3 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":1,"step":14,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":1,"step":16,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":2,"step":23,"text":"注入故障：inject_offline @ vx-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":2,"step":23,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":2,"step":25,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":2,"step":26,"text":"节点 vx-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":2,"step":27,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":3,"step":33,"text":"注入故障：inject_heat @ motor-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":3,"step":34,"text":"已检查 4 项服务及其依赖，诊断记录 1 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"COOLING","episode":3,"step":35,"text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"VERIFY_WAIT","episode":3,"step":36,"text":"继续采样：需要温度/振动正常，工艺故障还需连续3次正常。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":3,"step":42,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":4,"step":66,"text":"注入故障：inject_driver @ vx-02；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":4,"step":66,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":4,"step":69,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":4,"step":70,"text":"节点 vx-02 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":4,"step":70,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":5,"step":76,"text":"注入故障：inject_runtime @ linux-02；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":5,"step":76,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 1 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":5,"step":77,"text":"已检查 4 项服务及其依赖，诊断记录 3 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":5,"step":78,"text":"节点 linux-02 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":5,"step":78,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":1,"step":15,"text":"注入故障：inject_offline @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":1,"step":15,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 4 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":1,"step":18,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":1,"step":19,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":1,"step":20,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":2,"step":24,"text":"注入故障：inject_driver @ linux-02；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":2,"step":24,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":2,"step":25,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":2,"step":25,"text":"节点 linux-02 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":2,"step":26,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":3,"step":29,"text":"注入故障：inject_runtime @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":3,"step":29,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":3,"step":29,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":3,"step":30,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":3,"step":30,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":4,"step":33,"text":"注入故障：inject_heat @ motor-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":4,"step":34,"text":"已检查 4 项服务及其依赖，诊断记录 1 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"COOLING","episode":4,"step":36,"text":"开启模拟冷却，温升逐步衰减；需至少3次连续正常采样后验证。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"VERIFY_WAIT","episode":4,"step":36,"text":"继续采样：需要温度/振动正常，工艺故障还需连续3次正常。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":4,"step":43,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":1,"step":34,"text":"注入故障：inject_offline @ linux-02；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":1,"step":34,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 1 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":1,"step":36,"text":"已检查 4 项服务及其依赖，诊断记录 4 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":1,"step":37,"text":"节点 linux-02 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":1,"step":37,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":2,"step":44,"text":"注入故障：inject_runtime @ win-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":2,"step":44,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 1 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":2,"step":45,"text":"已检查 4 项服务及其依赖，诊断记录 3 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":2,"step":47,"text":"节点 win-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":2,"step":48,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":3,"step":51,"text":"注入故障：inject_driver @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":3,"step":51,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 2 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":3,"step":52,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":3,"step":53,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":3,"step":53,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"READY","episode":0,"step":0,"text":"初始化完成：Java规划与CloudSim部署事件已执行；当前为合成工业环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":1,"step":10,"text":"注入故障：inject_offline @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":1,"step":10,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 4 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":1,"step":11,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":1,"step":11,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":1,"step":12,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":2,"step":14,"text":"注入故障：inject_driver @ linux-02；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":2,"step":14,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":2,"step":15,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":2,"step":16,"text":"节点 linux-02 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":2,"step":16,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAULT","episode":3,"step":18,"text":"注入故障：inject_runtime @ linux-01；记录原部署的故障原因与依赖影响。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"FAILOVER","episode":3,"step":18,"text":"自动启动兼容备用节点接管；健康节点原部署保留，迁移/新增 3 项，当前可用 4/4。故障节点修复后不自动回迁。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"DIAGNOSIS","episode":3,"step":19,"text":"已检查 4 项服务及其依赖，诊断记录 5 条。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"NODE_REPAIRED","episode":3,"step":19,"text":"节点 linux-01 已恢复在线并作为备用；当前接管部署保留，不自动回迁，可再次注入故障。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}
+{"kind":"RECOVERED","episode":3,"step":20,"text":"本轮恢复检查通过：全部服务、依赖、声明与资源约束通过，工艺数据正常。可直接继续注入下一项故障，或选择重置环境。","session":"3d177166-d7d5-496e-8ed0-3dc8bdd279f1"}

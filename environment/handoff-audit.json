@@ -1,0 +1,13 @@
+{
+  "source_snapshot_files": 14077,
+  "source_snapshot_hashes": "PASS",
+  "tracked_files": 14627,
+  "tracked_bytes": 134098961,
+  "largest_file": {
+    "path": "history/results/extended-study-20261020-191716-1004abb9/project/study/results.json",
+    "bytes": 23688310,
+    "sha256": "100f1fc81a444a34b5535a895c5d9b9fc0c47b1ba32858b866e29c8f6606b650"
+  },
+  "credential_pattern_findings": [],
+  "git_newline_conversion": "disabled"
+}

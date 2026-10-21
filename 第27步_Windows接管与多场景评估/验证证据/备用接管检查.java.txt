@@ -1,0 +1,82 @@
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import org.example.iiot.demo.DemoEngine;
+import org.example.iiot.config.ScenarioLoader;
+import org.example.iiot.config.ScenarioLoader.Data;
+import org.example.iiot.model.NodeSpec;
+import org.example.iiot.Json;
+public class StandbyCheck {
+ static int checks=0;static List<Map<String,Object>> evidence=new ArrayList<>();
+ static void ok(boolean b,String message){checks++;if(!b)throw new AssertionError(message);}
+ @SuppressWarnings("unchecked") static List<Map<String,Object>> rows(Map<String,Object>s,String k){return (List<Map<String,Object>>)s.get(k);}
+ static Map<String,Object> node(Map<String,Object>s,String id){return rows(s,"nodes").stream().filter(n->n.get("id").equals(id)).findFirst().orElseThrow();}
+ static Map<String,String> locations(Map<String,Object>s){var m=new LinkedHashMap<String,String>();for(var r:rows(s,"services"))m.put((String)r.get("id"),(String)r.get("node"));return m;}
+ static DemoEngine engine(Data d)throws Exception{return new DemoEngine(d,Files.createTempDirectory("iiot-standby-check-").resolve("events.jsonl"));}
+ static Map<String,Object> fix(DemoEngine e,String target,Map<String,String> taken)throws Exception{
+  var s=e.action("diagnose","","");
+  ok(rows(s,"diagnosis").stream().anyMatch(r->r.get("target").equals(target)),"root cause retained after takeover");
+  s=e.action("repair","","");
+  ok(node(s,target).get("status").equals("ONLINE"),"repaired target online");
+  ok(node(s,target).get("role").equals("STANDBY"),"repaired target standby");
+  ok(((Number)node(s,target).get("cpu")).doubleValue()==0,"repaired target reserves no CPU");
+  ok(((Number)node(s,target).get("ram")).longValue()==0,"repaired target reserves no RAM");
+  ok(locations(s).equals(taken),"no failback after repair");
+  s=e.action("verify","","");
+  ok(s.get("phase").equals("RECOVERED"),"verification passes");
+  ok(locations(s).equals(taken),"no failback after verify");
+  ok((boolean)s.get("can_inject"),"next fault allowed");
+  return s;
+ }
+ public static void main(String[]args)throws Exception{
+  var d=ScenarioLoader.load(Path.of("configs/demo-industrial"));var e=engine(d);
+  var initial=e.state();ok((int)initial.get("ready")==4,"initial full chain");
+  ok(locations(initial).get("collect-c1").equals("vx-01"),"default collect vx01");
+  ok(locations(initial).get("detect-c1").equals("linux-01"),"default detect linux01");
+  // Repaired nodes alternate as active and standby through repeated faults.
+  for(int round=0;round<6;round++){
+   String failed=round%2==0?"vx-01":"vx-02",backup=round%2==0?"vx-02":"vx-01";
+   String type=List.of("inject_driver","inject_offline","inject_runtime").get(round%3);
+   var before=locations(e.state());var s=e.action(type,failed,"");
+   ok(s.get("phase").equals("FAULT"),"fault still awaits diagnosis");
+   ok((int)s.get("ready")==4,"standby immediately restores full chain");
+   for(String service:List.of("collect-c1","preprocess-c1","alert-c1"))ok(locations(s).get(service).equals(backup),"all faulty-node workloads evacuated");
+   ok(locations(s).get("detect-c1").equals(before.get("detect-c1")),"healthy detect pinned");
+   ok(node(s,failed).get("status").equals(type.equals("inject_offline")?"OFFLINE":"CAPABILITY_GAP"),"fault health visible until repair");
+   ok(rows(s,"moves").size()==3,"three takeover moves recorded");
+   ok(rows(s,"deployment_events").size()==9,"only three moved services started");
+   ok(rows(s,"deployment_events").stream().noneMatch(r->r.get("service").equals("detect-c1")),"healthy detect not restarted");
+   String events=Json.write(s.get("deployment_events")),moves=Json.write(s.get("moves"));
+   s=fix(e,failed,locations(s));
+   ok(Json.write(s.get("deployment_events")).equals(events),"repair does not restart services");
+   ok(Json.write(s.get("moves")).equals(moves),"takeover audit retained");
+   ok(rows(s,"completed_episodes").size()==round+1,"continuous history retained");
+   evidence.add(Map.of("case","alternating takeover","round",round+1,"fault",type,"failed",failed,"backup",backup,"ready",s.get("ready")));
+  }
+  var before=locations(e.state());var s=e.action("inject_driver","win-02","");
+  ok(locations(s).equals(before),"unused standby fault does not move workloads");
+  ok(rows(s,"deployment_events").isEmpty(),"unused standby has no fake restarts");
+  fix(e,"win-02",before);
+  s=e.action("inject_heat","","");ok(locations(s).equals(before),"heat injection has no relocation");
+  e.action("diagnose","","");e.action("repair","","");for(int n=0;n<7;n++)e.action("step","","");
+  s=e.action("verify","","");ok(s.get("phase").equals("RECOVERED"),"heat recovers");
+  ok(locations(s).equals(before),"heat repair has no relocation");
+  // Capacity deliberately leaves no compatible backup for the three VX services.
+  var linux=d.nodes().stream().filter(n->n.id().equals("linux-01")).findFirst().orElseThrow();
+  var vx=d.nodes().stream().filter(n->n.id().equals("vx-01")).findFirst().orElseThrow();
+  var tight=new NodeSpec(linux.id(),linux.os(),1,2000,1024,linux.bandwidthMiBps());
+  var constrained=new Data("no-spare",List.of(tight,vx),d.services(),d.nodeCapabilities(),d.variantRequirements(),d.origins(),d.source());
+  var limited=engine(constrained);ok((int)limited.state().get("ready")==4,"constrained initial chain available");
+  s=limited.action("inject_driver","vx-01","");
+  ok((int)s.get("ready")<4&&(boolean)s.get("standby_shortage"),"insufficient standby reported");
+  ok(rows(s,"services").stream().noneMatch(r->r.get("node").equals("vx-01")),"faulty node never used as backup");
+  limited.action("diagnose","","");s=limited.action("repair","","");
+  ok(node(s,"vx-01").get("status").equals("ONLINE"),"limited target repairs online");
+  ok(node(s,"vx-01").get("role").equals("STANDBY"),"limited repair still no failback");
+  s=limited.action("verify","","");ok(s.get("phase").equals("DEGRADED"),"cannot claim full recovery with missing services");
+  ok(!(boolean)s.get("can_inject"),"incomplete recovery cannot start another episode");
+  evidence.add(Map.of("case","insufficient standby","phase",s.get("phase"),"ready",s.get("ready")));
+  Files.writeString(Path.of("standby-check-results.json"),Json.write(Map.of("status","PASS","checks",checks,"evidence",evidence)),StandardCharsets.UTF_8);
+  System.out.println("PASS "+checks+" standby checks");
+ }
+}

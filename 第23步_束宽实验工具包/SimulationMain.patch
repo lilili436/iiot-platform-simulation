@@ -1,0 +1,63 @@
+--- SimulationMain.java (before)
++++ SimulationMain.java (beam width argument)
+@@ -33,9 +33,9 @@
+ 
+     public static void main(String[] args) {
+         CloudSim.init(1, Calendar.getInstance(), false);
+-	if (args.length > 3) {
++	if (args.length > 4) {
+     		throw new IllegalArgumentException(
+-            	"Usage: <algorithm> <scenario> [chainCount]"
++            	"Usage: <algorithm> <scenario> [chainCount] [beamWidth]"
+     		);
+ 	}
+ 
+@@ -71,7 +71,28 @@
+     		}
+ 	}
+ 
+-	System.out.println("Scenario: " + scenario);
++        int beamWidth = 64;
++        if (args.length > 3) {
++            if (!args[0].equals("beam_search")) {
++                throw new IllegalArgumentException(
++                        "beamWidth is supported only for beam_search."
++                );
++            }
++            try {
++                beamWidth = Integer.parseInt(args[3]);
++            } catch (NumberFormatException e) {
++                throw new IllegalArgumentException(
++                        "beamWidth must be a positive integer.", e
++                );
++            }
++            if (beamWidth <= 0) {
++                throw new IllegalArgumentException(
++                        "beamWidth must be a positive integer."
++                );
++            }
++        }
++
++        System.out.println("Scenario: " + scenario);
+ 	System.out.println("Chains: " + chainCount);
+ 
+         List<NodeSpec> nodes = List.of(
+@@ -303,6 +324,9 @@
+ 	);
+ 	System.out.println();
+ 	String algorithm = args.length == 0 ? "first_fit" : args[0];
++        if (algorithm.equals("beam_search")) {
++            System.out.println("Beam width: " + beamWidth);
++        }
+ 
+ 	System.out.println(
+         	"=== Placement plan: " + algorithm + " ==="
+@@ -321,7 +345,7 @@
+             		BestFitPlanner.plan(nodes, services);
+ 
+ 		case "beam_search" ->
+-            		BeamSearchPlanner.plan(nodes, services, 64);
++            		BeamSearchPlanner.plan(nodes, services, beamWidth);
+ 
+     		default -> throw new IllegalArgumentException(
+             		"Unknown algorithm: " + algorithm

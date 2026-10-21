@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>工业环境 · 部署与故障演练台</title><link rel="stylesheet" href="/style.css"></head>
+<body><div class="shell">
+<header><div class="brand"><div class="brand-icon">II</div><div><div class="eyebrow">INDUSTRIAL OPERATIONS LAB</div><h1>异构工业环境 · 故障演练台</h1></div></div>
+<div class="header-right"><span class="mode">合成环境 / 本地 Java + CloudSim</span><span id="connection" class="connection">连接中</span></div></header>
+<section class="toolbar"><div class="scenario"><span class="live-dot"></span><b>一号车间 · 设备状态监测</b><span class="sub">Linux / Windows / VxWorks</span></div>
+<div class="controls"><select id="algorithm" aria-label="部署算法"><option value="beam_search">束搜索 · W=64</option><option value="first_fit">First Fit</option><option value="round_robin">Round Robin</option><option value="best_fit">Best Fit</option></select><button id="play">暂停演练</button><button id="step">推进1秒</button><button id="reset">重置环境</button><a class="button" href="/api/export" download>导出演练记录</a></div></section>
+<section class="metrics">
+<div><span>业务链状态</span><b id="phase">—</b><small id="phase-note">等待初始化</small></div>
+<div><span>可用服务 / 请求</span><b id="ready">—</b><small>含能力及上游依赖检查</small></div>
+<div><span>电机温度</span><b id="temperature">—</b><small>告警阈值 80 °C</small></div>
+<div><span>最近部署仿真耗时</span><b id="duration">—</b><small>CloudSim逻辑时间，非墙钟等待</small></div>
+<div><span>演练进度</span><b id="clock">0 s</b><small id="normal">正常采样：0</small></div>
+</section>
+<main>
+<div class="left-column">
+<section class="panel equipment"><div class="panel-heading"><h2>工业设备</h2><span class="tag">模拟数据源</span></div>
+<div class="plant" id="plant"><div class="pipe p1"></div><div class="pipe p2"></div><div class="motor">
+<svg viewBox="0 0 240 170" role="img" aria-label="一号电机模拟示意图"><defs><linearGradient id="metal" x2="0" y2="1"><stop stop-color="#4b627e"/><stop offset="1" stop-color="#23364d"/></linearGradient></defs><path d="M18 130h205v10H18z" fill="#465c78"/><path d="M63 118h22v15H63zM158 118h22v15h-22z" fill="#617b99"/><rect x="44" y="53" width="146" height="68" rx="16" fill="url(#metal)" stroke="#7994b0"/><path d="M75 58v58m18-58v58m18-58v58m18-58v58m18-58v58m18-58v58" stroke="#182b42" stroke-width="6"/><rect x="184" y="72" width="38" height="25" rx="4" fill="#9ab0c6"/><rect x="96" y="28" width="49" height="26" rx="4" fill="#526c87"/><circle cx="45" cy="87" r="31" fill="#1c3048" stroke="#8aa3bc" stroke-width="2"/><g class="rotor"><path d="M45 65v44m-22-22h44m-38-16 32 32m0-32-32 32" stroke="#46d5cb" stroke-width="4"/></g><circle cx="45" cy="87" r="7" fill="#a5fff4"/><circle cx="144" cy="41" r="4" id="motor-led" fill="#2dd4bf"/></svg>
+</div><div class="device-label"><b>M-01 · 三相电机</b><span id="motor-status">正常运行</span></div>
+<div class="device-values"><div><span>振动</span><b id="vibration">—</b></div><div><span>转速</span><b id="rpm">—</b></div></div>
+<div class="pump"><span class="pump-icon">◉</span><div><b>P-02 · 循环泵</b><small>合成工艺背景设备</small></div><i class="live-dot"></i></div>
+<div id="cooling-indicator" class="cooling">冷却回路：待命</div></div>
+<div class="panel-heading compact"><h3>实时温度趋势</h3><span>°C</span></div><svg id="trend" viewBox="0 0 310 130" role="img" aria-label="模拟温度曲线"></svg>
+<div class="legend"><i class="line cyan"></i>电机温度 <i class="line orange"></i>告警阈值</div>
+</section>
+<section class="panel guide"><h2>汇报演示顺序</h2><ol><li>观察设备与服务部署</li><li>注入工艺或平台故障</li><li>检查直接原因及依赖影响</li><li>观察备用接管并修复原节点</li><li>验证恢复并导出记录</li></ol></section>
+</div>
+<div class="center-column">
+<section class="panel"><div class="panel-heading"><h2>设备监测业务链</h2><span class="tag" id="workflow-status">检查中</span></div><div class="chain" id="chain"></div><p class="caption">设备采样 → collect → preprocess → detect → alert。上游不可用时，下游标记阻断。</p></section>
+<section class="panel topology"><div class="panel-heading"><h2>异构计算节点</h2><span class="sub">容量条为服务资源预留</span></div><div class="node-grid" id="nodes"></div><div class="legend"><i class="dot good"></i>在线 <i class="dot warn"></i>能力缺口 <i class="dot bad"></i>离线 <span>故障时备用接管；修复后在线备用，不自动回迁</span></div></section>
+<section class="panel"><div class="panel-heading"><h2>最近一次启动／接管事件</h2><span class="tag">CloudSim原始事件</span></div><div class="deploy-events" id="deploy-events"></div><p class="caption">仅新启动／迁移的服务产生传输、启动、就绪事件；健康节点保留部署；实时设备曲线是独立的合成演练采样。</p></section>
+<section class="panel"><div class="panel-heading"><h2>演练事件记录</h2><span id="event-count" class="sub">0 条</span></div><div id="history" class="history" aria-live="polite"></div></section>
+</div>
+<aside class="right-column">
+<section class="panel fault-panel"><div class="panel-heading"><h2>故障注入与恢复</h2><span class="tag">受控演练</span></div>
+<label for="fault-type">故障类型</label><select id="fault-type"><option value="inject_offline">平台故障 · 节点离线</option><option value="inject_driver">适配故障 · 传感器驱动缺失</option><option value="inject_runtime">适配故障 · 运行环境不可用</option><option value="inject_heat">工艺故障 · 电机温度过高</option></select>
+<label for="fault-node">目标节点</label><select id="fault-node"></select><p class="hint" id="fault-hint">建议选择当前承载服务的节点，观察故障传播。</p>
+<div id="round-progress" class="hint" aria-live="polite">已完成 0 / 4 类故障 · 可连续演示</div>
+<button id="inject" class="danger full">1 · 注入故障</button>
+<div class="steps"><button id="diagnose">2 · 检查与诊断</button><button id="repair">3 · 执行修复</button><button id="verify" class="primary">4 · 验证恢复</button></div>
+<div id="message" class="message" role="status">当前处于正常运行阶段。</div>
+</section>
+<section class="panel"><div class="panel-heading"><h2>诊断结果</h2><span class="sub" id="diagnosis-count">—</span></div><div id="diagnosis" class="diagnosis"><div class="empty">注入故障后执行诊断，将列出直接原因和受影响的依赖。</div></div></section>
+<section class="panel"><div class="panel-heading"><h2>接管与修复动作</h2><span class="sub">可追溯</span></div><div id="moves"><div class="empty">平台故障自动接管；原节点修复后在线备用。</div></div></section>
+<div class="scope">演示范围：合成设备、节点能力与故障；展示算法、部署事件及业务可用性恢复。未控制物理设备，未启动真实Linux/Windows容器或VxWorks RTP。</div>
+</aside>
+</main><footer><span>INDUSTRIAL LAB / 跨平台微服务部署与适配</span><span id="session">本地会话</span></footer></div>
+<script src="/app.js"></script></body></html>

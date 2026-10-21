@@ -1,0 +1,2 @@
+scenario,algorithm,requested,accepted,ready,active_nodes,admission_ratio,ready_ratio,cpu_reserved_ratio_all,ram_reserved_ratio_all,cpu_reserved_ratio_active,ram_reserved_ratio_active,combined_reserved_ratio_active,deployment_sim_seconds,planner_wall_ms
+pressure,first_fit,12,8,8,3,0.666666667,0.666666667,0.686746988,0.756756757,0.876923077,0.933333333,0.905128205,8.560000000,3.796900

@@ -1,0 +1,97 @@
+package org.example.iiot.metrics;
+
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+import org.example.iiot.model.*;
+import org.example.iiot.placement.*;
+import org.example.iiot.simulation.DeploymentSimulation;
+
+/** Audits declared synthetic capabilities independently of the planner's gate. */
+public final class PlatformAudit {
+    private PlatformAudit() {}
+    private static String csv(Object value) {
+        return "\"" + String.valueOf(value).replace("\"", "\"\"") + "\"";
+    }
+    private static String row(Object... values) {
+        return Arrays.stream(values).map(PlatformAudit::csv).collect(Collectors.joining(","))+"\n";
+    }
+    private static String joined(Set<String> values) { return String.join("|",new TreeSet<>(values)); }
+    public static Set<String> dependencyClosedReady(List<ServiceSpec> services,Set<String> locallyReady) {
+        Set<String> result=new HashSet<>(locallyReady);
+        boolean changed;
+        do {
+            changed=false;
+            for (ServiceSpec service:services) {
+                if (result.contains(service.id()) && !result.containsAll(service.dependencies())) {
+                    result.remove(service.id()); changed=true;
+                }
+            }
+        } while(changed);
+        return Set.copyOf(result);
+    }
+    public static void report(String algorithm,List<NodeSpec> nodes,List<ServiceSpec> services,
+            FirstFitPlanner.Result plan,DeploymentSimulation deployment) {
+        Set<String> ready=deployment.readyServiceIds(), localReady=new HashSet<>();
+        Map<String,List<String>> reasons=new LinkedHashMap<>();
+        int[] counts=new int[PlatformPolicy.CODES.size()];
+        int violations=0;
+        for (var assignment:plan.assignments()) {
+            List<String> failures=PlatformPolicy.declaredRejectionReasons(assignment.variant(),assignment.node());
+            reasons.put(assignment.serviceId(),failures);
+            if (failures.isEmpty()) {
+                if (ready.contains(assignment.serviceId())) localReady.add(assignment.serviceId());
+            } else violations++;
+            for (int i=0;i<counts.length;i++) {
+                String prefix=PlatformPolicy.CODES.get(i)+":";
+                if (failures.stream().anyMatch(s->s.startsWith(prefix))) counts[i]++;
+            }
+        }
+        Set<String> compliant=dependencyClosedReady(services,localReady);
+        var workflows=WorkflowMetrics.summarize(services,compliant);
+        StringBuilder details=new StringBuilder(row("service_id","variant_id","node_id","ready",
+            "locally_compliant","compliant_ready","violation_codes","violation_details",
+            "required_arch","node_arch","required_runtime","node_runtimes","required_apis","node_apis",
+            "required_drivers","node_drivers","required_security","node_security"));
+        for (var a:plan.assignments()) {
+            var r=PlatformPolicy.requirementsFor(a.variant());
+            var c=PlatformPolicy.capabilitiesFor(a.node());
+            var failures=reasons.get(a.serviceId());
+            details.append(row(a.serviceId(),a.variant().id(),a.node().id(),ready.contains(a.serviceId()),
+                failures.isEmpty(),compliant.contains(a.serviceId()),
+                failures.stream().map(s->s.substring(0,s.indexOf(':'))).collect(Collectors.joining("|")),
+                String.join("; ",failures),r.architecture(),c.architecture(),r.runtime(),joined(c.runtimes()),
+                joined(r.apis()),joined(c.apis()),joined(r.drivers()),joined(c.drivers()),
+                joined(r.security()),joined(c.security())));
+        }
+        StringBuilder candidates=new StringBuilder(row("service_id","variant_id","node_id",
+                "active_eligible_initial_capacity","active_rejections","declared_platform_rejections"));
+        for (var service:services) for(var variant:service.variants()) for(var node:nodes) {
+            var active=CompatibilityChecker.rejectionReasons(variant,node);
+            candidates.append(row(service.id(),variant.id(),node.id(),active.isEmpty(),
+                    String.join("; ",active),String.join("; ",PlatformPolicy.declaredRejectionReasons(variant,node))));
+        }
+        String summary=row("capability_profile","compatibility_mode","audited_assignments","violating_assignments",
+            "locally_compliant_ready","compliant_ready","dependency_blocked_ready","compliant_workflows",
+            "total_workflows","compliant_ready_ratio","compliant_workflow_ratio",
+            "arch_mismatch_count","runtime_missing_count","api_missing_count","driver_missing_count","security_mismatch_count")
+            +row(PlatformPolicy.profile(),PlatformPolicy.mode(),plan.assignments().size(),violations,
+            localReady.size(),compliant.size(),localReady.size()-compliant.size(),workflows.ready(),workflows.requested(),
+            services.isEmpty()?0.0:(double)compliant.size()/services.size(),
+            workflows.requested()==0?0.0:(double)workflows.ready()/workflows.requested(),
+            counts[0],counts[1],counts[2],counts[3],counts[4]);
+        try {
+            Path root=Path.of("results"); Files.createDirectories(root);
+            Path file=Files.createTempFile(root,"platform-audit-"+algorithm+"-",".csv");
+            String base=file.getFileName().toString().replaceFirst("\\.csv$","");
+            Files.writeString(root.resolve(base+".assignments.csv"),details,StandardCharsets.UTF_8);
+            Files.writeString(root.resolve(base+".candidates.csv"),candidates,StandardCharsets.UTF_8);
+            Files.writeString(file,summary,StandardCharsets.UTF_8);
+            System.out.printf("Declared capability audit: violations=%d, compliant ready=%d, compliant workflows=%d%n",
+                    violations,compliant.size(),workflows.ready());
+            System.out.println("Audit saved: "+file.toAbsolutePath());
+        } catch(IOException e) { throw new IllegalStateException("Cannot save platform audit",e); }
+    }
+}

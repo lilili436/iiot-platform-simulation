@@ -1,0 +1,2 @@
+"capability_profile","compatibility_mode","audited_assignments","violating_assignments","locally_compliant_ready","compliant_ready","dependency_blocked_ready","compliant_workflows","total_workflows","compliant_ready_ratio","compliant_workflow_ratio","arch_mismatch_count","runtime_missing_count","api_missing_count","driver_missing_count","security_mismatch_count"
+"mixed","full","8","0","8","8","0","1","3","0.6666666666666666","0.3333333333333333","0","0","0","0","0"

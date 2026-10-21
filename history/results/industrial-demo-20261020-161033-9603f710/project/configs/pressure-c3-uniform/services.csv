@@ -1,0 +1,13 @@
+﻿id,dependencies
+collect-c1,
+preprocess-c1,collect-c1
+detect-c1,preprocess-c1
+alert-c1,detect-c1
+collect-c2,
+preprocess-c2,collect-c2
+detect-c2,preprocess-c2
+alert-c2,detect-c2
+collect-c3,
+preprocess-c3,collect-c3
+detect-c3,preprocess-c3
+alert-c3,detect-c3

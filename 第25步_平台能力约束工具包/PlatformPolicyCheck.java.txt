@@ -1,0 +1,59 @@
+import java.util.*;
+import org.example.iiot.placement.*;
+import org.example.iiot.metrics.PlatformAudit;
+import org.example.iiot.model.*;
+
+public class PlatformPolicyCheck {
+    private static int checks;
+    private static void check(boolean condition,String name) {
+        checks++; if(!condition) throw new AssertionError(name);
+    }
+    public static void main(String[] args) {
+        var r=new PlatformPolicy.Requirements("X","RUN",Set.of("API"),Set.of("DRV"),Set.of("SEC"));
+        var valid=new PlatformPolicy.Capabilities("X",Set.of("RUN"),Set.of("API"),Set.of("DRV"),Set.of("SEC"));
+        check(PlatformPolicy.compare(r,valid).isEmpty(),"valid capabilities");
+        List<PlatformPolicy.Capabilities> wrong=List.of(
+            new PlatformPolicy.Capabilities("Y",valid.runtimes(),valid.apis(),valid.drivers(),valid.security()),
+            new PlatformPolicy.Capabilities("X",Set.of(),valid.apis(),valid.drivers(),valid.security()),
+            new PlatformPolicy.Capabilities("X",valid.runtimes(),Set.of(),valid.drivers(),valid.security()),
+            new PlatformPolicy.Capabilities("X",valid.runtimes(),valid.apis(),Set.of(),valid.security()),
+            new PlatformPolicy.Capabilities("X",valid.runtimes(),valid.apis(),valid.drivers(),Set.of()));
+        for(int i=0;i<wrong.size();i++) {
+            var reasons=PlatformPolicy.compare(r,wrong.get(i));
+            check(reasons.size()==1 && reasons.get(0).startsWith(PlatformPolicy.CODES.get(i)+":"),"single-category "+i);
+        }
+        var v=new ServiceVariant("collect-vx-c1",OsType.VXWORKS,100,32,2,.1);
+        var n=new NodeSpec("vx-02",OsType.VXWORKS,1,300,128,10);
+        PlatformPolicy.configure("mixed","base");
+        check(PlatformPolicy.activeRejectionReasons(v,n).isEmpty(),"base gate off");
+        check(PlatformPolicy.declaredRejectionReasons(v,n).size()==2,"auditor independent of gate");
+        PlatformPolicy.configure("mixed","full");
+        check(PlatformPolicy.activeRejectionReasons(v,n).size()==2,"gate on");
+        check(!CompatibilityChecker.canDeploy(v,n),"common checker rejects");
+        var pre=new ServiceVariant("preprocess-vx-c1",OsType.VXWORKS,300,128,4,.2);
+        check(PlatformPolicy.declaredRejectionReasons(pre,n).get(0).startsWith("API_MISSING"),"API missing");
+        PlatformPolicy.configure("uniform","full");
+        check(CompatibilityChecker.canDeploy(v,n),"uniform control");
+        var probe=new ServiceVariant("probe-linux",OsType.LINUX,200,128,1,.1);
+        check(PlatformPolicy.requirementsFor(probe).apis().isEmpty(),"diagnostic probe");
+        boolean unknown=false;
+        try { PlatformPolicy.activeRejectionReasons(new ServiceVariant("unknown-vx",OsType.VXWORKS,1,1,1,.1),n); }
+        catch(IllegalArgumentException e) { unknown=true; }
+        check(unknown,"unknown declaration fails closed");
+        boolean bad=false; try {PlatformPolicy.configure("invented","full");}catch(IllegalArgumentException e){bad=true;}
+        check(bad,"unknown profile");
+        boolean immutable=false; try{r.apis().add("another");}catch(UnsupportedOperationException e){immutable=true;}
+        check(immutable,"immutable requirement sets");
+        List<ServiceSpec> dag=List.of(new ServiceSpec("a",List.of(),List.of(v)),
+            new ServiceSpec("b",List.of("a"),List.of(v)),
+            new ServiceSpec("c",List.of("b"),List.of(v)),
+            new ServiceSpec("d",List.of(),List.of(v)),
+            new ServiceSpec("e",List.of("c","d"),List.of(v)));
+        check(PlatformAudit.dependencyClosedReady(dag,Set.of("b","c","d","e")).equals(Set.of("d")),"transitive invalid upstream");
+        check(PlatformAudit.dependencyClosedReady(dag,Set.of("a","b","c","e")).equals(Set.of("a","b","c")),"multi-parent invalidation");
+        check(PlatformAudit.dependencyClosedReady(dag,Set.of("a","b","c","d","e")).size()==5,"all dependencies compliant");
+        List<ServiceSpec> reverse=new ArrayList<>(dag); Collections.reverse(reverse);
+        check(PlatformAudit.dependencyClosedReady(reverse,Set.of("b","c","d","e")).equals(Set.of("d")),"independent of iteration order");
+        System.out.println("PASS "+checks+" platform policy and dependency checks");
+    }
+}
